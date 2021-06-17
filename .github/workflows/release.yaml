@@ -1,0 +1,208 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version'
+        required: true
+
+jobs:
+
+  create_release:
+    name: Create release
+    runs-on: ubuntu-latest
+    # Note this. We are going to use that in further jobs.
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.event.inputs.version }}
+        release_name: Release ${{ github.event.inputs.version }}
+        draft: false
+        prerelease: false
+
+  create_actions_artifact:
+    name: Create actions artifact
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Create 'actions' folder
+      run: |
+        mkdir -p tmp/actions
+    - uses: papeloto/action-zip@v1
+      with:
+        files: tmp
+        dest: actions.zip
+        
+    - name: Upload actions
+      uses: actions/upload-artifact@v2
+      with:
+        name: actions
+        path: actions.zip
+
+  get_actions:
+    name: Get actions
+    needs: create_actions_artifact
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        action: 
+          - command
+          - stopwatch
+          - counter
+          - obs-websocket
+          - clipboard
+          - random-color
+
+    steps:
+
+    - name: Create 'actions' folder
+      run: |
+        mkdir -p tmp
+        
+    - name: Download actions
+      uses: actions/download-artifact@v2
+      with:
+        name: actions
+        
+    - name: Create folder
+      run: |
+        7z x actions.zip -otmp/
+
+    - name: Get action
+      uses: robinraju/release-downloader@v1
+      with:
+        repository: "ideckia/action_${{ matrix.action }}"
+        latest: true
+        fileName: ${{ matrix.action }}.zip
+      
+    - name: Extract files
+      run: |
+        7z x ${{ matrix.action }}.zip -otmp/actions
+
+    - uses: papeloto/action-zip@v1
+      with:
+        files: tmp
+        dest: actions.zip
+        
+    - name: Upload actions
+      uses: actions/upload-artifact@v2
+      with:
+        name: actions
+        path: actions.zip
+        
+  os_files:
+    name: OS files
+    needs: get_actions
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: 
+          - linux
+          - win
+          - macos
+
+        include:
+        - os: linux
+          SERVER: ideckia-linux
+          KEYMOUSE: ubuntu-latest
+          ARTIFACT: ideckia-linux
+
+        - os: win
+          SERVER: ideckia-win.exe
+          KEYMOUSE: windows-latest
+          ARTIFACT: ideckia-win
+
+        - os: macos
+          SERVER: ideckia-macos
+          KEYMOUSE: macos-latest
+          ARTIFACT: ideckia-macos
+    steps:
+    
+    - uses: actions/checkout@v2
+    
+    - name: Download actions
+      uses: actions/download-artifact@v2
+      with:
+        name: actions
+    
+    - name: Create folder
+      run: |
+        mkdir -p ${{ matrix.os }}
+        7z x actions.zip -o${{ matrix.os }}
+        mv app.props ${{ matrix.os }}
+        mv layout.json ${{ matrix.os }}
+      
+    - name: Get keymouse
+      uses: robinraju/release-downloader@v1
+      with:
+        repository: "ideckia/action_keymouse"
+        latest: true
+        fileName: keymouse-${{ matrix.KEYMOUSE }}.zip
+    
+    - name: Get server
+      uses: robinraju/release-downloader@v1
+      with:
+        repository: "ideckia/ideckia_server"
+        latest: true
+        fileName: ${{ matrix.SERVER }}
+    
+    - name: Move files
+      run: |
+        7z x keymouse-${{ matrix.KEYMOUSE }}.zip -o${{ matrix.os }}/actions
+        mv ${{ matrix.SERVER }} ${{ matrix.os }}
+        
+    - uses: papeloto/action-zip@v1
+      with:
+        files: ${{ matrix.os }}
+        dest: ${{ matrix.ARTIFACT }}.zip
+        
+    - name: Upload actions
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.ARTIFACT }}
+        path: ${{ matrix.ARTIFACT }}.zip
+        
+  release_assets:
+    name: Release assets
+    needs:
+    - os_files
+    - create_release
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os-ideckia: 
+          - ideckia-linux
+          - ideckia-win
+          - ideckia-macos
+    steps:
+    
+    - name: Download artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: ${{ matrix.os-ideckia }}
+      
+    - name: Upload release assets
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ needs.create_release.outputs.upload_url }}
+        # This is how it will be named on the release page. Put hatever name
+        # you like, remember that they need to be different for each platform.
+        # You can choose any build matrix parameters. For Rust I use the
+        # target triple.
+        asset_name: ${{ matrix.os-ideckia }}.zip
+        # The path to the file you want to upload.
+        asset_path: ${{ matrix.os-ideckia }}.zip
+        # probably you will need to change it, but most likely you are
+        # uploading a binary file
+        asset_content_type: application/zip

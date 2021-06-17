@@ -1,0 +1,5 @@
+ideckia.port=8888
+ideckia.layout-file-path=layout.json
+ideckia.actions-path=actions
+ideckia.log-level=debug
+ideckia.auto-launch-enabled=false
