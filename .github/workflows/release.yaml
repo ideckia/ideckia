@@ -59,7 +59,6 @@ jobs:
           - stopwatch
           - counter
           - obs-websocket
-          - clipboard
           - random-color
 
     steps:

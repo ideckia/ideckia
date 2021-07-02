@@ -43,7 +43,6 @@ This `index.js` file must have [this structure](https://github.com/ideckia/ideck
 * [Keymouse](https://github.com/ideckia/action_keymouse): Create hotkeys, write strings, move the mouse... A wrapper for [RobotJs](http://robotjs.io/)
 * [Counter](https://github.com/ideckia/action_counter): Count how many times you killed someone or how many times crashes your app.
 * [Random color](https://github.com/ideckia/action_random-color): Generate random color and show it in the item.
-* [Clipboard](https://github.com/ideckia/action_clipboard): Executing this action, the defined value will store in the clipboard.
 * [Stopwatch](https://github.com/ideckia/action_stopwatch): Executing this action, will start and pause a timer shown in the button itself.
 * [OBS-websocket](https://github.com/ideckia/action_obs-websocket): Control OBS via websockets. A wrapper for [obs-websocket-js](https://www.npmjs.com/package/obs-websocket-js)
 
