@@ -1,6 +1,7 @@
 {
     "rows": 2,
     "columns": 2,
+    "textSize": 18,
     "folders": [
         {
             "text": "_main_",
