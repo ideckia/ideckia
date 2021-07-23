@@ -4,8 +4,8 @@
 
 Control your computer (Linux, Windows, Mac) with a mobile client.
 
-* Create multiple buttons to control your computer (open apps, control OBS, hotkeys...)
-* Organize those buttons in different folders (deveoper, streamer, music, games...)
+* Create multiple buttons to control your computer (run commands, control OBS, hotkeys, display weather...)
+* Organize those buttons in different folders (developer, streamer, music, games...)
 
 Download prebuilt binaries and a basic layout from [here](https://github.com/ideckia/ideckia/releases). The client app is [here](https://github.com/ideckia/mobile_client/releases).
 
