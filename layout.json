@@ -1,6 +1,6 @@
 {
     "rows": 2,
-    "columns": 2,
+    "columns": 3,
     "textSize": 18,
     "folders": [
         {
@@ -87,7 +87,9 @@
                     }
                 }
             ]
-        }
+        },
+        {},
+        {}
     ],
     "icons": [
         {
