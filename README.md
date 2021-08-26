@@ -9,6 +9,13 @@ Control your computer (Linux, Windows, Mac) with a mobile client.
 
 Download prebuilt binaries and a basic layout from [here](https://github.com/ideckia/ideckia/releases). The client app is [here](https://github.com/ideckia/mobile_client/releases).
 
+## How to get it working
+
+* Execute the downloaded binary for the computer. When it runs will show the IP and the port where the server is running.
+* Be sure to have the computer and the mobile client connected to the same network.
+* Open up the client app. It will look for the server in the IP range 192.168.1.xxx and the 8888 port.
+ * If it doesn't get any response from the server, it will show a screen to insert the IP and the port manually.
+
 ## Concepts
 
 * Layout: Bunch of _items_
