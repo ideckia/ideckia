@@ -20,20 +20,21 @@ Download prebuilt binaries and a basic layout from [here](https://github.com/ide
 
 * Layout: Bunch of _items_
 * Item: An element that has a single or multiple _states_. It is clickable in the client.
-* State: Definition of the item status: text, textColor, bgColor, icon and a _action_.
-* Action: Action which will be fired in the host computer when the item is pressed in the client.
+* State: Definition of the item status: text, textColor, bgColor, icon and an _action_ list.
+* Action: Action which will be fired (can be more than one in a state) in the host computer when the item is pressed in the client.
 
 ## Layout file
 
-All the items and their actions are defined in a plain JSON file. [Here](https://github.com/ideckia/ideckia/blob/master/layout.json) is a basic one
+All the items and their actions are defined in a plain JSON file. [Here](https://github.com/ideckia/ideckia/blob/master/layout.json) is a basic one.
 
 ## Item
 
 There can be three types of item:
 
 * SwitchFolder: When clicked goes to the folder with index specified by the `toFolder` property. [Here](https://github.com/ideckia/ideckia/blob/master/layout.json#L79-L85) goes to the 0 index folder from the folders array.
-* SingleState: When clicked executes the action defined in the `state` property. [Here](https://github.com/ideckia/ideckia/blob/master/layout.json#L44-L56) will execute `counter` action every time is clicked.
-* MultiState: When clicked executes the action (if any) defined in the current `state` from `states` array and goes to the next element. [Here](https://github.com/ideckia/ideckia/blob/master/layout.json#L27-L39) at the beginning the text shown will be `working` and the backgroud will be green. When clicked the state changes to `not working` and red background. When clicked again `working` and so on.
+* States: When clicked executes the actions in order they are defined in the current `state` from `list` array. Actions array can be null or empty. After executing the actions and goes to the next element in `list`.
+  * [Here](https://github.com/ideckia/ideckia/blob/master/layout.json#L29-L44) at the beginning the text shown will be `working` and the backgroud will be green. When clicked the state changes to `not working` and red background. When clicked again `working` and so on. No action will be executed.
+  * [Here](https://github.com/ideckia/ideckia/blob/master/layout.json#L45-L65) will execute `counter` action every time is clicked.
 
 ## Actions
 
