@@ -60,6 +60,7 @@ jobs:
           - counter
           - obs-websocket
           - random-color
+          - timezones
 
     steps:
 
