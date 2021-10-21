@@ -25,16 +25,16 @@ Download prebuilt binaries and a basic layout from [here](https://github.com/ide
 
 ## Layout file
 
-All the items and their actions are defined in a plain JSON file. [Here](https://github.com/ideckia/ideckia/blob/master/layout.json) is a basic one.
+All the items and their actions are defined in a plain JSON file. [Here](./layout.json) is a basic one.
 
 ## Item
 
 There can be three types of item:
 
-* SwitchFolder: When clicked goes to the folder with index specified by the `toFolder` property. [Here](https://github.com/ideckia/ideckia/blob/master/layout.json#L79-L85) goes to the 0 index folder from the folders array.
+* SwitchFolder: When clicked goes to the folder with name specified by the `toFolder` property. [Here](./layout.json#L81-L98) goes to the folder named `_main_`.
 * States: When clicked executes the actions in order they are defined in the current `state` from `list` array. Actions array can be null or empty. After executing the actions and goes to the next element in `list`.
-  * [Here](https://github.com/ideckia/ideckia/blob/master/layout.json#L29-L44) at the beginning the text shown will be `working` and the backgroud will be green. When clicked the state changes to `not working` and red background. When clicked again `working` and so on. No action will be executed.
-  * [Here](https://github.com/ideckia/ideckia/blob/master/layout.json#L45-L65) will execute `counter` action every time is clicked.
+  * [Here](./layout.json#L29-L44) at the beginning the text shown will be `working` and the backgroud will be green. When clicked the state changes to `not working` and red background. When clicked again `working` and so on. No action will be executed.
+  * [Here](./layout.json#L45-L65) will execute `counter` action every time is clicked.
 
 ## Actions
 

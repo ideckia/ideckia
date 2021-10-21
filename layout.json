@@ -4,7 +4,7 @@
 	"textSize": 18,
 	"folders": [
 		{
-			"text": "_main_",
+			"name": "_main_",
 			"items": [
 				{
 					"kind": {
@@ -66,7 +66,7 @@
 				{
 					"kind": {
 						"SwitchFolder": {
-							"toFolder": 1,
+							"toFolder": "other_folder",
 							"state": {
 								"text": "other folder",
 								"textColor": "ff333333",
@@ -80,11 +80,12 @@
 		},
 		{
 			"text": "other folder",
+			"name": "other_folder",
 			"items": [
 				{
 					"kind": {
 						"SwitchFolder": {
-							"toFolder": 0,
+							"toFolder": "_main_",
 							"state": {
 								"text": "back",
 								"bgColor": "ffff0000",
