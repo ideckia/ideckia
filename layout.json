@@ -2,7 +2,7 @@
 	"rows": 2,
 	"columns": 3,
 	"textSize": 18,
-	"folders": [
+	"dirs": [
 		{
 			"name": "_main_",
 			"items": [
@@ -65,8 +65,8 @@
 				},
 				{
 					"kind": {
-						"SwitchFolder": {
-							"toFolder": "other_folder",
+						"ChangeDir": {
+							"toDir": "other_dir",
 							"state": {
 								"text": "other folder",
 								"textColor": "ff333333",
@@ -79,13 +79,13 @@
 			]
 		},
 		{
-			"text": "other folder",
-			"name": "other_folder",
+			"text": "other dir",
+			"name": "other_dir",
 			"items": [
 				{
 					"kind": {
-						"SwitchFolder": {
-							"toFolder": "_main_",
+						"ChangeDir": {
+							"toDir": "_main_",
 							"state": {
 								"text": "back",
 								"bgColor": "ffff0000",
