@@ -5,7 +5,7 @@
 Control your computer (Linux, Windows, Mac) with a mobile client.
 
 * Create multiple buttons to control your computer (run commands, control OBS, hotkeys, display weather...)
-* Organize those buttons in different folders (developer, streamer, music, games...)
+* Organize those buttons in different directories (developer, streamer, music, games...)
 
 Download prebuilt binaries and a basic layout from [here](https://github.com/ideckia/ideckia/releases). The client app is [here](https://github.com/ideckia/mobile_client/releases).
 
@@ -31,7 +31,7 @@ All the items and their actions are defined in a plain JSON file. [Here](./layou
 
 There can be three types of item:
 
-* SwitchFolder: When clicked goes to the folder with name specified by the `toFolder` property. [Here](./layout.json#L81-L98) goes to the folder named `_main_`.
+* ChangeDir: When clicked goes to the folder with name specified by the `toDir` property. [Here](./layout.json#L81-L98) goes to the directory named `_main_`.
 * States: When clicked executes the actions in order they are defined in the current `state` from `list` array. Actions array can be null or empty. After executing the actions and goes to the next element in `list`.
   * [Here](./layout.json#L29-L44) at the beginning the text shown will be `working` and the backgroud will be green. When clicked the state changes to `not working` and red background. When clicked again `working` and so on. No action will be executed.
   * [Here](./layout.json#L45-L65) will execute `counter` action every time is clicked.
