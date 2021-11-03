@@ -64,6 +64,7 @@ jobs:
           - worklog
           - ftp-connect
           - ssh-connect
+          - open-weather
 
     steps:
 

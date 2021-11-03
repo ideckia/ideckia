@@ -61,6 +61,11 @@ This `index.js` file must have [this structure](https://github.com/ideckia/ideck
 * [Random color](https://github.com/ideckia/action_random-color): Generate random color and show it in the item.
 * [Stopwatch](https://github.com/ideckia/action_stopwatch): Executing this action, will start and pause a timer shown in the button itself.
 * [OBS-websocket](https://github.com/ideckia/action_obs-websocket): Control OBS via websockets. A wrapper for [obs-websocket-js](https://www.npmjs.com/package/obs-websocket-js)
+* [Timezones](https://github.com/ideckia/action_timezones): Show the time in the configurated timezones.
+* [Worklog](https://github.com/ideckia/action_worklog): Log you daily work in a plain json file.
+* [FTP-Connect](https://github.com/ideckia/action_ftp-connect): Connect to FTP in a simple and fast way.
+* [SSH-Connect](https://github.com/ideckia/action_ssh-connect): Connect to SSH in a simple and fast way.
+* [Open weather](https://github.com/ideckia/action_open-weather): Show the weather in the configured towns.
 
 Don't you like these actions? Change them or [create your own](#create-your-own-action) to fit your needs.
 
@@ -69,4 +74,5 @@ Don't you like these actions? Change them or [create your own](#create-your-own-
 Execute `ideckia --new-action` to create a new action from a existing template.
   * Select which template do you want to use as base. Current options Haxe and JavaScript
   * Select the name for the action.
+  * Write a description for the action (optional).
   * A new folder is created in the actions folder with the name of you new action which contains the files from the selected template.
