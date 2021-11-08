@@ -7,11 +7,11 @@ Control your computer (Linux, Windows, Mac) with a mobile client.
 * Create multiple buttons to control your computer (run commands, control OBS, hotkeys, display weather...)
 * Organize those buttons in different directories (developer, streamer, music, games...)
 
-Download prebuilt binaries and a basic layout from [here](https://github.com/ideckia/ideckia/releases). The client app is [here](https://github.com/ideckia/mobile_client/releases).
+Download prebuilt binaries and a basic layout from [here](https://github.com/ideckia/ideckia/releases) (the server code is hosted [here](https://github.com/ideckia/ideckia_server)). The client app is [here](https://github.com/ideckia/mobile_client/releases).
 
 ## How to get it working
 
-* Execute the downloaded binary for the computer. When it runs will show the IP and the port where the server is running.
+* Execute the downloaded binary for the computer. When it runs will show the IP and the port where the server is running. This port can be configured in the `app.props` file.
 * Be sure to have the computer and the mobile client connected to the same network.
 * Open up the client app. It will look for the server in the IP range 192.168.1.xxx and the 8888 port.
  * If it doesn't get any response from the server, it will show a screen to insert the IP and the port manually.
@@ -57,7 +57,7 @@ This `index.js` file must have [this structure](https://github.com/ideckia/ideck
 
 * [Command](https://github.com/ideckia/action_command): Execute an application or shell file with given parameters 
 * [Keymouse](https://github.com/ideckia/action_keymouse): Create hotkeys, write strings, move the mouse... A wrapper for [RobotJs](http://robotjs.io/)
-* [Counter](https://github.com/ideckia/action_counter): Count how many times you killed someone or how many times crashes your app.
+* [Counter](https://github.com/ideckia/action_counter): Count how many times the item is clicked. Can be a countdown too.
 * [Random color](https://github.com/ideckia/action_random-color): Generate random color and show it in the item.
 * [Stopwatch](https://github.com/ideckia/action_stopwatch): Executing this action, will start and pause a timer shown in the button itself.
 * [OBS-websocket](https://github.com/ideckia/action_obs-websocket): Control OBS via websockets. A wrapper for [obs-websocket-js](https://www.npmjs.com/package/obs-websocket-js)
@@ -67,7 +67,7 @@ This `index.js` file must have [this structure](https://github.com/ideckia/ideck
 * [SSH-Connect](https://github.com/ideckia/action_ssh-connect): Connect to SSH in a simple and fast way.
 * [Open weather](https://github.com/ideckia/action_open-weather): Show the weather in the configured towns.
 
-Don't you like these actions? Change them or [create your own](#create-your-own-action) to fit your needs.
+You don't like these actions? Change them or [create your own](#create-your-own-action) to fit your needs.
 
 ### Create your own action
 
