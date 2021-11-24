@@ -15,6 +15,7 @@ Download prebuilt binaries and a basic layout from [here](https://github.com/ide
 * Be sure to have the computer and the mobile client connected to the same network.
 * Open up the client app. It will look for the server in the IP range 192.168.1.xxx and the 8888 port.
  * If it doesn't get any response from the server, it will show a screen to insert the IP and the port manually.
+* You can configure your [layout](#layout-file) by hand or using the [editor](#editor)
 
 ## Concepts
 
@@ -76,3 +77,19 @@ Execute `ideckia --new-action` to create a new action from a existing template.
   * Select the name for the action.
   * Write a description for the action (optional).
   * A new folder is created in the actions folder with the name of you new action which contains the files from the selected template.
+
+### Preset actions
+
+Next to the `index.js` file of each action can be a file called `presets.json` where are some predefined properties for that action. These properties will be loaded by the [editor](#editor).
+
+## Editor
+
+Open your browser and go to [http://localhost:8888/editor](http://localhost:8888/editor) (the port is the one where the server is running). 
+
+### Customize editor
+
+When serving the editor web, Ideckia looks for the each of the editor files (`index.html`, `style.css` and `app.js`) in the `editor` folder in the root of the project. If the file doesn't exists, it's loaded from the bundled app.
+
+Loading files in this way, you can customize only the CSS creating a new file in the path `editor/style.css` next to the `idecia` executable. The `index.html` and `app.js` files will be loaded from the app itself and the CSS file will be the newly created.
+
+Or you can craete an entire new editor ovewriting the three files :-).
