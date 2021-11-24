@@ -6,6 +6,8 @@ on:
       version:
         description: 'Version'
         required: true
+      body:
+        description: 'Release notes'
 
 jobs:
 
@@ -24,7 +26,8 @@ jobs:
       with:
         tag_name: ${{ github.event.inputs.version }}
         release_name: Release ${{ github.event.inputs.version }}
-        body_path: ./changelog.md
+        body: |
+         ${{ github.event.inputs.body }}
         draft: false
         prerelease: false
 
