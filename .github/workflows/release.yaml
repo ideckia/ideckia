@@ -6,8 +6,6 @@ on:
       version:
         description: 'Version'
         required: true
-      body:
-        description: 'Release notes'
 
 jobs:
 
@@ -18,6 +16,8 @@ jobs:
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
     - name: Create release
       id: create_release
       uses: actions/create-release@v1
@@ -26,8 +26,7 @@ jobs:
       with:
         tag_name: ${{ github.event.inputs.version }}
         release_name: Release ${{ github.event.inputs.version }}
-        body: |
-         ${{ github.event.inputs.body }}
+        body_path: changelog.md
         draft: false
         prerelease: false
 
