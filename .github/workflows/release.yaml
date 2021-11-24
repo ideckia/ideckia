@@ -24,7 +24,7 @@ jobs:
       with:
         tag_name: ${{ github.event.inputs.version }}
         release_name: Release ${{ github.event.inputs.version }}
-        body_path: changelog.md
+        body_path: ./changelog.md
         draft: false
         prerelease: false
 
