@@ -90,6 +90,6 @@ Open your browser and go to [http://localhost:8888/editor](http://localhost:8888
 
 When serving the editor web, Ideckia looks for the each of the editor files (`index.html`, `style.css` and `app.js`) in the `editor` folder in the root of the project. If the file doesn't exists, it's loaded from the bundled app.
 
-Loading files in this way, you can customize only the CSS creating a new file in the path `editor/style.css` next to the `idecia` executable. The `index.html` and `app.js` files will be loaded from the app itself and the CSS file will be the newly created.
+Loading files in this way, you can customize only the CSS creating a new file in the path `editor/style.css` next to the `ideckia` executable. The `index.html` and `app.js` files will be loaded from the app itself and the CSS file will be the newly created.
 
 Or you can craete an entire new editor ovewriting the three files :-).
