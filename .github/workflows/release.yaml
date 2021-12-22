@@ -88,7 +88,8 @@ jobs:
       uses: robinraju/release-downloader@v1
       with:
         repository: "ideckia/action_${{ matrix.action }}"
-        latest: true
+        latest: false
+        tag: ${{ github.event.inputs.version }}
         fileName: ${{ matrix.action }}.zip
       
     - name: Extract files
