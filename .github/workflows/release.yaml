@@ -39,7 +39,7 @@ jobs:
     - name: Create 'actions' folder
       run: |
         mkdir -p tmp/actions
-    - uses: papeloto/action-zip@v1
+    - uses: vimtor/action-zip@v1
       with:
         files: tmp
         dest: actions.zip
