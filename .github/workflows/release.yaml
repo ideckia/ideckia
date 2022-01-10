@@ -95,7 +95,7 @@ jobs:
       run: |
         7z x ${{ matrix.action }}.zip -otmp/actions
 
-    - uses: papeloto/action-zip@v1
+    - uses: vimtor/action-zip@v1
       with:
         files: tmp
         dest: actions.zip
@@ -168,7 +168,7 @@ jobs:
         7z x keymouse-${{ matrix.KEYMOUSE }}.zip -o${{ matrix.os }}/actions
         mv ${{ matrix.SERVER }} ${{ matrix.os }}
         
-    - uses: papeloto/action-zip@v1
+    - uses: vimtor/action-zip@v1
       with:
         files: ${{ matrix.os }}
         dest: ${{ matrix.ARTIFACT }}.zip
