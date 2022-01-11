@@ -2,7 +2,7 @@
 
 ## What is it for?
 
-Control your computer (Linux, Windows, Mac) with a mobile client.
+Control your computer (GNU/Linux, Windows, Mac) with a mobile client.
 
 * Create multiple buttons to control your computer (run commands, control OBS, hotkeys, display weather...)
 * Organize those buttons in different directories (developer, streamer, music, games...)
@@ -30,7 +30,7 @@ All the items and their actions are defined in a plain JSON file. [Here](./layou
 
 ## Item
 
-There can be three types of item:
+There can be two types of item:
 
 * ChangeDir: When clicked goes to the folder with name specified by the `toDir` property. [Here](./layout.json#L81-L98) goes to the directory named `_main_`.
 * States: When clicked executes the actions in order they are defined in the current `state` from `list` array. Actions array can be null or empty. After executing the actions and goes to the next element in `list`.
@@ -39,7 +39,7 @@ There can be three types of item:
 
 ## Actions
 
-Actions are available in the `actions` folder usually (configurable via `app.props` file next to the executable). Every action is defined in it's own folder and an `index.js` file in it.
+Actions sources are available in the `actions` folder usually (configurable via `app.props` file next to the executable). Every action is defined in it's own folder and an `index.js` file in it.
 
 This `index.js` file must have [this structure](https://github.com/ideckia/ideckia_api#action-structure) to be called from the server when loaded and executed
 
@@ -84,7 +84,7 @@ Next to the `index.js` file of each action can be a file called `presets.json` w
 
 ## Editor
 
-Open your browser and go to [http://localhost:8888/editor](http://localhost:8888/editor) (the port is the one where the server is running). 
+Open your browser and go to [http://localhost:8888/editor](http://localhost:8888/editor) (the port is the one where the server is running).
 
 ### Customize editor
 
@@ -92,4 +92,4 @@ When serving the editor web, Ideckia looks for the each of the editor files (`in
 
 Loading files in this way, you can customize only the CSS creating a new file in the path `editor/style.css` next to the `ideckia` executable. The `index.html` and `app.js` files will be loaded from the app itself and the CSS file will be the newly created.
 
-Or you can craete an entire new editor ovewriting the three files :-).
+Or you can create an entire new editor ovewriting the three files :-).
