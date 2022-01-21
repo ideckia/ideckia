@@ -70,6 +70,12 @@ Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` f
 
 Ez zaizkizu ekintza hauek gustatzen? Alda itzazu edo [zurea sortu](#create-your-own-action) zure beharretara egokitzeko.
 
+### Aurredefinitutako ekintzak
+
+Ekintza bakoitzaren `index.js` fitxategiaren ondoan `presets.json` fitxategi bat egon daiteke. Ekintza horren aurredefinitutako propietateak gordeko dira bertan. Propietate hauek [editoreak](#editor) kargatzeko erabiliko dira.
+
+## Ideckia komandoak
+
 ### Zure ekintza propioa sortzen
 
 Exekutatu `ideckia --new-action` txantilioi batetik ekintza berri bat sortzeko.
@@ -78,9 +84,13 @@ Exekutatu `ideckia --new-action` txantilioi batetik ekintza berri bat sortzeko.
   * Ekintzaren deskripzio bat idatzi (aukeran).
   * Aukeratu duzun izenarekin direktorio berri bat sortuko da `actions` direktorioan, aukeratu duzun txantilioiaren fitxategiekin.
 
-### Aurredefinitutako ekintzak
+### Layout-a gehitu
 
-Ekintza bakoitzaren `index.js` fitxategiaren ondoan `presets.json` fitxategi bat egon daiteke. Ekintza horren aurredefinitutako propietateak gordeko dira bertan. Propietate hauek [editoreak](#editor) kargatzeko erabiliko dira.
+Exekutatu `ideckia --append-layout layout_berria.json` parametroan emandako layout-a gure uneko layout-ari gehitzeko.
+
+### Direktorioak esportatu
+
+Exekutatu `ideckia --export-dirs _main_,develop,gaming` `_main_`, `develop` eta `gaming` izeneko direktorioak `{proiektuaren erroa}/dirs.export.json` fitxategira esportatzeko.
 
 ## Editorea
 

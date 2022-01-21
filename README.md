@@ -70,6 +70,12 @@ This `index.js` file must have [this structure](https://github.com/ideckia/ideck
 
 You don't like these actions? Change them or [create your own](#create-your-own-action) to fit your needs.
 
+### Preset actions
+
+Next to the `index.js` file of each action can be a file called `presets.json` where are some predefined properties for that action. These properties will be loaded by the [editor](#editor).
+
+## Ideckia commands
+
 ### Create your own action
 
 Execute `ideckia --new-action` to create a new action from a existing template.
@@ -78,9 +84,13 @@ Execute `ideckia --new-action` to create a new action from a existing template.
   * Write a description for the action (optional).
   * A new folder is created in the actions folder with the name of you new action which contains the files from the selected template.
 
-### Preset actions
+### Append layout
 
-Next to the `index.js` file of each action can be a file called `presets.json` where are some predefined properties for that action. These properties will be loaded by the [editor](#editor).
+Execute `ideckia --append-layout another_layout.json` to append the layout defined in the given parameter to you current layout.
+
+### Export directory
+
+Execute `ideckia --export-dirs _main_,develop,gaming` to export directories named `_main_`, `develop` and `gaming` from the current layout to the file `{project root}/dirs.export.json`.
 
 ## Editor
 
