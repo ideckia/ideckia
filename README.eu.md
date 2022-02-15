@@ -83,6 +83,7 @@ Exekutatu `ideckia --new-action` txantilioi batetik ekintza berri bat sortzeko.
   * Ekintzaren izena idatzi.
   * Ekintzaren deskripzio bat idatzi (aukeran).
   * Aukeratu duzun izenarekin direktorio berri bat sortuko da `actions` direktorioan, aukeratu duzun txantilioiaren fitxategiekin.
+  * Ez ahantzi zure ekintzak [egitura hau](https://github.com/ideckia/ideckia_api#action-structure) izan behar duela.
 
 ### Layout-a gehitu
 
