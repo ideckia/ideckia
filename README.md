@@ -83,6 +83,7 @@ Execute `ideckia --new-action` to create a new action from a existing template.
   * Select the name for the action.
   * Write a description for the action (optional).
   * A new folder is created in the actions folder with the name of you new action which contains the files from the selected template.
+  * Don't forget that the created action must have [this structure](https://github.com/ideckia/ideckia_api#action-structure).
 
 ### Append layout
 
