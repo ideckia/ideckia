@@ -37,6 +37,22 @@ There can be two types of item:
   * [Here](./layout.json#L29-L44) at the beginning the text shown will be `working` and the backgroud will be green. When clicked the state changes to `not working` and red background. When clicked again `working` and so on. No action will be executed.
   * [Here](./layout.json#L45-L65) will execute `counter` action every time is clicked.
 
+### RichString
+
+The text in the state can have different size, color and style (bold, italic, underline) parts. The format is `{transformer:text to transform}`. The _transformer_ can be:
+
+* `b`: The `text to transform` will be **bold**
+* `i`: The `text to transform` will be _italic_
+* `u`: The `text to transform` will be underlined
+* `color.colorName`: The `text to transform` will be rendered in `colorName` color.
+* `size.fontSize`: The `text to transform` will be rendered in `fontSize` size.
+
+The transformers can be chained. For example:
+
+```javascript
+The text is {b:{i:{u:bold, italic and underlined}}}. And this text will be {color.red:{size.50:colored with red and BIG}}
+```
+
 ## Actions
 
 Actions sources are available in the `actions` folder usually (configurable via `app.props` file next to the executable). Every action is defined in it's own folder and an `index.js` file in it.
