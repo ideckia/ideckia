@@ -12,6 +12,7 @@ Download prebuilt binaries and a basic layout from [here](https://github.com/ide
 ## How to get it working
 
 * Execute the downloaded binary for the computer. When it runs will show the IP and the port where the server is running. This port can be configured in the `app.props` file.
+* Allow Ideckia in your firewall so it can be found by the mobile client in local network.
 * Be sure to have the computer and the mobile client connected to the same network.
 * Open up the client app. It will look for the server in the IP range 192.168.1.xxx and the 8888 port.
  * If it doesn't get any response from the server, it will show a screen to insert the IP and the port manually.
@@ -83,6 +84,7 @@ This `index.js` file must have [this structure](https://github.com/ideckia/ideck
 * [FTP-Connect](https://github.com/ideckia/action_ftp-connect): Connect to FTP in a simple and fast way.
 * [SSH-Connect](https://github.com/ideckia/action_ssh-connect): Connect to SSH in a simple and fast way.
 * [Open weather](https://github.com/ideckia/action_open-weather): Show the weather in the configured towns.
+* [Clementine control](https://github.com/ideckia/action_clementine-control): Control [Clementine](https://www.clementine-player.org/).
 
 You don't like these actions? Change them or [create your own](#create-your-own-action) to fit your needs.
 

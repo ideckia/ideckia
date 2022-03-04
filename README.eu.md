@@ -12,6 +12,7 @@ Zure sistemarentzako sortutako exekutagarriak eta oinarrizko layout bat [hemendi
 ## Nola jarri martxan
 
 * Deskargatutako exekutagarria martxan jarri. Hasieratzen denean martxan dagoen IP zenbakia eta portua erakutsiko ditu. Portua `app.props` fitxategian aldatu daiteke.
+* Zure firewall-ean Ideckia baimendu, bezeroak sare lokalean aurki dezan.
 * Ordenagailua eta mugikorra sare berean konektatuak daudela egiaztatu.
 * Mugikorreko aplikazioa abiarazi. Automatikoki bilatuko du zerbitzaria 192.168.1.0-255 tartean eta 8888 portuan.
  * Ez badu zerbitzariaren erantzunik jasotzen, IP eta portua eskuz sartzeko pantaila erakutsiko du.
@@ -36,6 +37,22 @@ Bi item mota daude:
 * States: Item mota hau klikatzean `list` zerrendako uneko `state`ko ekintzak exekutatuko ditu. Ekintzen zerrenda hutsa edo null izan daiteke. Ekintzak exekutatu ondoren `list` zerrendako hurrengo elementuan jarriko da.
   * [Hemen](./layout.json#L29-L44) hasieran `working` testua erakutsiko du eta hondoa berdea izanen du. Klikatzean testua `not working` izatera eta hondoa gorria izatera pasatuko dira. Berriz klikatzean `working` eta horrela jarraituko du. Ez da ekintzarik exekutatuko.
   * [Hemen](./layout.json#L45-L65) `counter` ekintza exekutatuko da klikatzen den aldi bakoitzean.
+  
+### RichString
+
+State-etako testuek tamaina, kolore edo estilo (lodia, etzana, azpimarratua) desberdinak izan ditzakete. Formatua `{transformer:aldatzeko testua}` da. Eta _transformer_ izan liteke:
+
+* `b`: `aldatzeko testua` **lodia** izanen da.
+* `i`: `aldatzeko testua` _etzana_ izanen da.
+* `u`: `aldatzeko testua` azpimarratua izanen da.
+* `color.colorName`: `aldatzeko testua`-k `colorName` kolorea izanen du.
+* `size.fontSize`: `aldatzeko testua`-k `fontSize` tamaina izanen du.
+
+Transformatzaileak kateatu daitezke, adibidez:
+
+```javascript
+Testu hau {b:{i:{u:lodia, etzana eta azpimarratua}}} da. Eta testu hau, berriz, {color.red:{size.50:gorriz koloreztatua eta HANDIA}}
+```
 
 ## Actions
 
@@ -67,6 +84,7 @@ Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` f
 * [FTP-Connect](https://github.com/ideckia/action_ftp-connect): Modu sinple eta azkarrean FTP batean konektatu.
 * [SSH-Connect](https://github.com/ideckia/action_ssh-connect): Modu sinple eta azkarrean SSH batean konektatu.
 * [Open weather](https://github.com/ideckia/action_open-weather): Konfiguratutako herrietako eguraldia erakutsi.
+* [Clementine control](https://github.com/ideckia/action_clementine-control): [Clementine](https://www.clementine-player.org/) kontrolatzeko.
 
 Ez zaizkizu ekintza hauek gustatzen? Alda itzazu edo [zurea sortu](#create-your-own-action) zure beharretara egokitzeko.
 
