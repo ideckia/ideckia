@@ -69,6 +69,7 @@ jobs:
           - ssh-connect
           - open-weather
           - clementine-control
+          - mute-mic
 
     steps:
 

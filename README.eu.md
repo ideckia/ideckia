@@ -85,10 +85,11 @@ Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` f
 * [SSH-Connect](https://github.com/ideckia/action_ssh-connect): Modu sinple eta azkarrean SSH batean konektatu.
 * [Open weather](https://github.com/ideckia/action_open-weather): Konfiguratutako herrietako eguraldia erakutsi.
 * [Clementine control](https://github.com/ideckia/action_clementine-control): [Clementine](https://www.clementine-player.org/) kontrolatzeko.
+* [Mute mic](https://github.com/ideckia/action_mute-mic): Mikrofonoa mututu eta berriro martxan jartzeko.
 
 Ez zaizkizu ekintza hauek gustatzen? Alda itzazu edo [zurea sortu](#create-your-own-action) zure beharretara egokitzeko.
 
-### Aurredefinitutako ekintzak
+### Ekintzen aurredefinitutako propietateak
 
 Ekintza bakoitzaren `index.js` fitxategiaren ondoan `presets.json` fitxategi bat egon daiteke. Ekintza horren aurredefinitutako propietateak gordeko dira bertan. Propietate hauek [editoreak](#editor) kargatzeko erabiliko dira.
 

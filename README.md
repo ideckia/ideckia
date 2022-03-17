@@ -85,10 +85,11 @@ This `index.js` file must have [this structure](https://github.com/ideckia/ideck
 * [SSH-Connect](https://github.com/ideckia/action_ssh-connect): Connect to SSH in a simple and fast way.
 * [Open weather](https://github.com/ideckia/action_open-weather): Show the weather in the configured towns.
 * [Clementine control](https://github.com/ideckia/action_clementine-control): Control [Clementine](https://www.clementine-player.org/).
+* [Mute mic](https://github.com/ideckia/action_mute-mic): Mute / unmute microphone
 
 You don't like these actions? Change them or [create your own](#create-your-own-action) to fit your needs.
 
-### Preset actions
+### Preset action properties
 
 Next to the `index.js` file of each action can be a file called `presets.json` where are some predefined properties for that action. These properties will be loaded by the [editor](#editor).
 
