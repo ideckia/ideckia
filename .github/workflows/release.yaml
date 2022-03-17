@@ -3,8 +3,11 @@ name: Release
 on:
   workflow_dispatch:
     inputs:
-      version:
-        description: 'Version'
+      app_version:
+        description: 'Ideckia version'
+        required: true
+      server_version:
+        description: 'Server version'
         required: true
 
 jobs:
@@ -24,8 +27,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.event.inputs.version }}
-        release_name: Release ${{ github.event.inputs.version }}
+        tag_name: ${{ github.event.inputs.app_version }}
+        release_name: Release ${{ github.event.inputs.app_version }}
         body_path: changelog.md
         draft: false
         prerelease: false
@@ -121,17 +124,17 @@ jobs:
 
         include:
         - os: linux
-          SERVER: ideckia-linux
+          SERVER_FILE: ideckia-linux
           KEYMOUSE: ubuntu-latest
           ARTIFACT: ideckia-linux
 
         - os: win
-          SERVER: ideckia-win.exe
+          SERVER_FILE: ideckia-win.exe
           KEYMOUSE: windows-latest
           ARTIFACT: ideckia-win
 
         - os: macos
-          SERVER: ideckia-macos
+          SERVER_FILE: ideckia-macos
           KEYMOUSE: macos-latest
           ARTIFACT: ideckia-macos
     steps:
@@ -162,13 +165,13 @@ jobs:
       with:
         repository: "ideckia/ideckia_server"
         latest: false
-        tag: ${{ github.event.inputs.version }}
-        fileName: ${{ matrix.SERVER }}
+        tag: ${{ github.event.inputs.server_version }}
+        fileName: ${{ matrix.SERVER_FILE }}
     
     - name: Move files
       run: |
         7z x keymouse-${{ matrix.KEYMOUSE }}.zip -o${{ matrix.os }}/actions
-        mv ${{ matrix.SERVER }} ${{ matrix.os }}
+        mv ${{ matrix.SERVER_FILE }} ${{ matrix.os }}
         
     - uses: vimtor/action-zip@v1
       with:
