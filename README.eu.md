@@ -16,7 +16,7 @@ Zure sistemarentzako sortutako exekutagarriak eta oinarrizko layout bat [hemendi
 * Ordenagailua eta mugikorra sare berean konektatuak daudela egiaztatu.
 * Mugikorreko aplikazioa abiarazi. Automatikoki bilatuko du zerbitzaria 192.168.1.0-255 tartean eta 8888 portuan.
  * Ez badu zerbitzariaren erantzunik jasotzen, IP eta portua eskuz sartzeko pantaila erakutsiko du.
-* Zure [layout-a](#layout-file) eskuz edo [editorea](#editor) erabiliz edita dezakezu.
+* Zure [layout-a](#layout-fitxategia) eskuz edo [editorea](#editorea) erabiliz edita dezakezu.
 
 ## Kontzeptuak
 
@@ -87,15 +87,15 @@ Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` f
 * [Clementine control](https://github.com/ideckia/action_clementine-control): [Clementine](https://www.clementine-player.org/) kontrolatzeko.
 * [Mute mic](https://github.com/ideckia/action_mute-mic): Mikrofonoa mututu eta berriro martxan jartzeko.
 
-Ez zaizkizu ekintza hauek gustatzen? Alda itzazu edo [zurea sortu](#create-your-own-action) zure beharretara egokitzeko.
+Ez zaizkizu ekintza hauek gustatzen? Alda itzazu edo [zurea sortu](#zure-ekintza-propioa-sortu) zure beharretara egokitzeko.
 
 ### Ekintzen aurredefinitutako propietateak
 
-Ekintza bakoitzaren `index.js` fitxategiaren ondoan `presets.json` fitxategi bat egon daiteke. Ekintza horren aurredefinitutako propietateak gordeko dira bertan. Propietate hauek [editoreak](#editor) kargatzeko erabiliko dira.
+Ekintza bakoitzaren `index.js` fitxategiaren ondoan `presets.json` fitxategi bat egon daiteke. Ekintza horren aurredefinitutako propietateak gordeko dira bertan. Propietate hauek [editoreak](#editorea) kargatzeko erabiliko dira.
 
 ## Ideckia komandoak
 
-### Zure ekintza propioa sortzen
+### Zure ekintza propioa sortu
 
 Exekutatu `ideckia --new-action` txantilioi batetik ekintza berri bat sortzeko.
   * Zein txantilioietan oinarritu nahi duzu aukeratu. Oraingoz Haxe eta JavaScript daude.
