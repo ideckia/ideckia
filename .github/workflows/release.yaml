@@ -73,6 +73,7 @@ jobs:
           - open-weather
           - clementine-control
           - mute-mic
+          - toot
 
     steps:
 

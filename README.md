@@ -86,6 +86,7 @@ This `index.js` file must have [this structure](https://github.com/ideckia/ideck
 * [Open weather](https://github.com/ideckia/action_open-weather): Show the weather in the configured towns.
 * [Clementine control](https://github.com/ideckia/action_clementine-control): Control [Clementine](https://www.clementine-player.org/).
 * [Mute mic](https://github.com/ideckia/action_mute-mic): Mute / unmute microphone
+* [Toot](https://github.com/ideckia/action_toot): Publish a toot in mastodon
 
 You don't like these actions? Change them or [create your own](#create-your-own-action) to fit your needs.
 

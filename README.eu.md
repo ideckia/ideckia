@@ -86,6 +86,7 @@ Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` f
 * [Open weather](https://github.com/ideckia/action_open-weather): Konfiguratutako herrietako eguraldia erakutsi.
 * [Clementine control](https://github.com/ideckia/action_clementine-control): [Clementine](https://www.clementine-player.org/) kontrolatzeko.
 * [Mute mic](https://github.com/ideckia/action_mute-mic): Mikrofonoa mututu eta berriro martxan jartzeko.
+* [Toot](https://github.com/ideckia/action_toot): Mastodon-en toot bat publikatzeko
 
 Ez zaizkizu ekintza hauek gustatzen? Alda itzazu edo [zurea sortu](#zure-ekintza-propioa-sortu) zure beharretara egokitzeko.
 
