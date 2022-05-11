@@ -3,3 +3,4 @@
 * [editor] Some preset and shared values fixes
 * [editor] Fix drag&drop sorting bug
 * Check if there are updates for the server on initialize
+* Show just the filename in the log
