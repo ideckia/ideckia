@@ -126,17 +126,14 @@ jobs:
         include:
         - os: linux
           SERVER_FILE: ideckia-linux
-          KEYMOUSE: ubuntu-latest
           ARTIFACT: ideckia-linux
 
         - os: win
           SERVER_FILE: ideckia-win.exe
-          KEYMOUSE: windows-latest
           ARTIFACT: ideckia-win
 
         - os: macos
           SERVER_FILE: ideckia-macos
-          KEYMOUSE: macos-latest
           ARTIFACT: ideckia-macos
     steps:
     
@@ -154,12 +151,12 @@ jobs:
         mv app.props ${{ matrix.os }}
         mv layout.json ${{ matrix.os }}
       
-    - name: Get keymouse
+    - name: Get action_keyboard
       uses: robinraju/release-downloader@v1
       with:
-        repository: "ideckia/action_keymouse"
+        repository: "ideckia/action_keyboard"
         latest: true
-        fileName: keymouse-${{ matrix.KEYMOUSE }}.zip
+        fileName: keyboard-${{ matrix.os }}.zip
     
     - name: Get server
       uses: robinraju/release-downloader@v1
@@ -171,7 +168,7 @@ jobs:
     
     - name: Move files
       run: |
-        7z x keymouse-${{ matrix.KEYMOUSE }}.zip -o${{ matrix.os }}/actions
+        7z x keyboard-${{ matrix.os }}.zip -o${{ matrix.os }}/actions
         mv ${{ matrix.SERVER_FILE }} ${{ matrix.os }}
         
     - uses: vimtor/action-zip@v1

@@ -74,7 +74,8 @@ Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` f
 ### Defektuzko ekintzak
 
 * [Command](https://github.com/ideckia/action_command): Aplikazio bat edo shell fitxategia exekutatzen du emandako parametroekin
-* [Keymouse](https://github.com/ideckia/action_keymouse): Laster-teklak sortu, hitzak idatzi, xagua mugitu... [RobotJs](http://robotjs.io/) erabiliz.
+* [Keymouse](https://github.com/ideckia/action_keymouse): **DEPRECATED** Laster-teklak sortu, hitzak idatzi, xagua mugitu... [RobotJs](http://robotjs.io/) erabiliz.
+* [Keyboard](https://github.com/ideckia/action_keyboard): Laster-teklak sortu, hitzak idatzi... [NutJs](http://nutjs.dev/) erabiliz.
 * [Counter](https://github.com/ideckia/action_counter): Itema zenbatetan klikatu den kontatu. Atzerakontaketa ere posible da.
 * [Random color](https://github.com/ideckia/action_random-color): Ausazko kolore bat sortu eta botoiean erakutsi.
 * [Stopwatch](https://github.com/ideckia/action_stopwatch): Ekintza hau exekutatzean, botoian bertan erakutsiko den tenporizadore bat hasi edo pausatuko da.
