@@ -78,7 +78,6 @@ jobs:
           - wait
           - countdown
           - keepassxc
-          - color-picker
           - emoji
 
     steps:
@@ -158,13 +157,20 @@ jobs:
         mv app.props ${{ matrix.os }}
         mv icon_mini.png ${{ matrix.os }}/icon.png
         mv layout.json ${{ matrix.os }}
-      
+
     - name: Get action_keyboard
       uses: robinraju/release-downloader@v1.7
       with:
         repository: "ideckia/action_keyboard"
         latest: true
         fileName: keyboard-${{ matrix.os }}.zip
+
+    - name: Get action_keyboard
+      uses: robinraju/release-downloader@v1.7
+      with:
+        repository: "ideckia/action_color-picker"
+        latest: true
+        fileName: color-picker-${{ matrix.os }}.zip
 
     - name: Get dialogs implementation
       uses: robinraju/release-downloader@v1.7
