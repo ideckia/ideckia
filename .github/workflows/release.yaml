@@ -97,7 +97,7 @@ jobs:
         7z x actions.zip -otmp/
 
     - name: Get action
-      uses: robinraju/release-downloader@v1
+      uses: robinraju/release-downloader@v1.7
       with:
         repository: "ideckia/action_${{ matrix.action }}"
         latest: true
@@ -160,28 +160,28 @@ jobs:
         mv layout.json ${{ matrix.os }}
       
     - name: Get action_keyboard
-      uses: robinraju/release-downloader@v1
+      uses: robinraju/release-downloader@v1.7
       with:
         repository: "ideckia/action_keyboard"
         latest: true
         fileName: keyboard-${{ matrix.os }}.zip
 
     - name: Get dialogs implementation
-      uses: robinraju/release-downloader@v1
+      uses: robinraju/release-downloader@v1.7
       with:
         repository: "ideckia/dialogs-clialogs"
         latest: true
         fileName: dialogs-${{ matrix.os }}.zip
 
     - name: Get MediaPlayer implementation
-      uses: robinraju/release-downloader@v1
+      uses: robinraju/release-downloader@v1.7
       with:
         repository: "ideckia/mediaplayer-rust"
         latest: true
         fileName: media-${{ matrix.os }}.zip
 
     - name: Get server
-      uses: robinraju/release-downloader@v1
+      uses: robinraju/release-downloader@v1.7
       with:
         repository: "ideckia/ideckia_server"
         latest: false
