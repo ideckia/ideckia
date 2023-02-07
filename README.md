@@ -47,12 +47,17 @@ The text in the state can have different size, color and style (bold, italic, un
 * `u`: The `text to transform` will be underlined
 * `color.colorName`: The `text to transform` will be rendered in `colorName` color.
 * `size.fontSize`: The `text to transform` will be rendered in `fontSize` size.
+* `emoji.unicode`: This one has no `:` since it doesn't apply to a text. Will render the emoji of the `unicode` value, multiple values can be separated with commas (`,`). For example `emoji.1F919,1F3FC`.
 
 The transformers can be chained. For example:
 
 ```javascript
 The text is {b:{i:{u:bold, italic and underlined}}}. And this text will be {color.red:{size.50:colored with red and BIG}}
 ```
+
+### Dialogs
+
+The dialog system interface is defined in the [API](https://github.com/ideckia/ideckia_api/tree/develop/api/dialog/Dialog.hx). An implementation based on [zenity](https://github.com/ncruces/zenity) is provided in the basic package of ideckia from [here](https://github.com/ideckia/dialogs-zenity). This implementation is stored in `dialogs` folder next to the executable, where the application will look for it. It can be customized as you want, you can even create a new one.
 
 ## Actions
 
@@ -70,6 +75,7 @@ This `index.js` file must have [this structure](https://github.com/ideckia/ideck
 |   |-- another_action
 |       |-- index.js
 |       |-- dependencies.js
+|       |-+ node_modules
 ```
 ### Default actions
 
@@ -79,15 +85,22 @@ This `index.js` file must have [this structure](https://github.com/ideckia/ideck
 * [Counter](https://github.com/ideckia/action_counter): Count how many times the item is clicked. Can be a countdown too.
 * [Random color](https://github.com/ideckia/action_random-color): Generate random color and show it in the item.
 * [Stopwatch](https://github.com/ideckia/action_stopwatch): Executing this action, will start and pause a timer shown in the button itself.
-* [OBS-websocket](https://github.com/ideckia/action_obs-websocket): Control OBS via websockets. A wrapper for [obs-websocket-js](https://www.npmjs.com/package/obs-websocket-js)
+* [OBS-websocket](https://github.com/ideckia/action_obs-websocket): **DEPRECATED** Control OBS via websockets. A wrapper for [obs-websocket-js](https://www.npmjs.com/package/obs-websocket-js)
 * [Timezones](https://github.com/ideckia/action_timezones): Show the time in the configurated timezones.
 * [Worklog](https://github.com/ideckia/action_worklog): Log you daily work in a plain json file.
 * [FTP-Connect](https://github.com/ideckia/action_ftp-connect): Connect to FTP in a simple and fast way.
 * [SSH-Connect](https://github.com/ideckia/action_ssh-connect): Connect to SSH in a simple and fast way.
 * [Open weather](https://github.com/ideckia/action_open-weather): Show the weather in the configured towns.
 * [Clementine control](https://github.com/ideckia/action_clementine-control): Control [Clementine](https://www.clementine-player.org/).
-* [Mute mic](https://github.com/ideckia/action_mute-mic): Mute / unmute microphone
-* [Toot](https://github.com/ideckia/action_toot): Publish a toot in mastodon
+* [Mute mic](https://github.com/ideckia/action_mute-mic): Mute / unmute microphone.
+* [Toot](https://github.com/ideckia/action_toot): Publish a toot in mastodon.
+* [Wait](https://github.com/ideckia/action_wait): Waits given milliseconds until the next action.
+* [Countdown](https://github.com/ideckia/action_countdown): Countdown timer
+* [Log-in](https://github.com/ideckia/action_log-in): Writes username and password and presses 'Enter' (this action uses [Keyboard](https://github.com/ideckia/action_keyboard), it is mandatory).
+* [Color-picker](https://github.com/ideckia/action_color-picker): Show in the item the color of the pixel where the mouse is.
+* [Obs-control](https://github.com/ideckia/action_obs-control): Control OBS Studio (replacing former [obs-websocket action](https://github.com/ideckia/action_obs-websocket))
+* [KeePasXC](https://github.com/ideckia/action_keepassxc): Get write the username and password from [KeePassXC](https://keepassxc.org/). This action uses [Log-in](https://github.com/ideckia/action_log-in), it is mandatory.
+* [Emoji](https://github.com/ideckia/action_emoji): Shows a random emoji every time is clicked
 
 You don't like these actions? Change them or [create your own](#create-your-own-action) to fit your needs.
 

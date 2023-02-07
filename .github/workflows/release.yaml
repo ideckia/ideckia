@@ -64,7 +64,7 @@ jobs:
           - command
           - stopwatch
           - counter
-          - obs-websocket
+          - obs-control
           - random-color
           - timezones
           - worklog
@@ -74,6 +74,12 @@ jobs:
           - clementine-control
           - mute-mic
           - toot
+          - log-in
+          - wait
+          - countdown
+          - keepassxc
+          - color-picker
+          - emoji
 
     steps:
 
@@ -135,6 +141,7 @@ jobs:
         - os: macos
           SERVER_FILE: ideckia-macos
           ARTIFACT: ideckia-macos
+
     steps:
     
     - uses: actions/checkout@v2
@@ -149,6 +156,7 @@ jobs:
         mkdir -p ${{ matrix.os }}
         7z x actions.zip -o${{ matrix.os }}
         mv app.props ${{ matrix.os }}
+        mv icon_mini.png ${{ matrix.os }}/icon.png
         mv layout.json ${{ matrix.os }}
       
     - name: Get action_keyboard
@@ -157,7 +165,21 @@ jobs:
         repository: "ideckia/action_keyboard"
         latest: true
         fileName: keyboard-${{ matrix.os }}.zip
-    
+
+    - name: Get dialogs implementation
+      uses: robinraju/release-downloader@v1
+      with:
+        repository: "ideckia/dialogs-clialogs"
+        latest: true
+        fileName: dialogs-${{ matrix.os }}.zip
+
+    - name: Get MediaPlayer implementation
+      uses: robinraju/release-downloader@v1
+      with:
+        repository: "ideckia/mediaplayer-rust"
+        latest: true
+        fileName: media-${{ matrix.os }}.zip
+
     - name: Get server
       uses: robinraju/release-downloader@v1
       with:
@@ -165,10 +187,12 @@ jobs:
         latest: false
         tag: ${{ github.event.inputs.server_version }}
         fileName: ${{ matrix.SERVER_FILE }}
-    
+
     - name: Move files
       run: |
         7z x keyboard-${{ matrix.os }}.zip -o${{ matrix.os }}/actions
+        7z x dialogs-${{ matrix.os }}.zip -o${{ matrix.os }}
+        7z x media-${{ matrix.os }}.zip -o${{ matrix.os }}
         mv ${{ matrix.SERVER_FILE }} ${{ matrix.os }}
         
     - uses: vimtor/action-zip@v1

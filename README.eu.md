@@ -47,12 +47,17 @@ State-etako testuek tamaina, kolore edo estilo (lodia, etzana, azpimarratua) des
 * `u`: `aldatzeko testua` azpimarratua izanen da.
 * `color.colorName`: `aldatzeko testua`-k `colorName` kolorea izanen du.
 * `size.fontSize`: `aldatzeko testua`-k `fontSize` tamaina izanen du.
+* `emoji.unicode`: Aukera honek ez du `:` karaktererik, ez baitzaio testu bati aplikatzen. `unicode` balioa duen emojia bistaratuko du, hainbat balio jar daitezke komaz (`,`) banaturik. Adibidez, `emoji.1F919,1F3FC`.
 
 Transformatzaileak kateatu daitezke, adibidez:
 
 ```javascript
 Testu hau {b:{i:{u:lodia, etzana eta azpimarratua}}} da. Eta testu hau, berriz, {color.red:{size.50:gorriz koloreztatua eta HANDIA}}
 ```
+
+### Elkarrizketa-koadroak
+
+Elkarrizketa-koadroen interfazea [API-an](https://github.com/ideckia/ideckia_api/tree/develop/api/dialog/Dialog.hx) dago definiturik. [zenity](https://github.com/ncruces/zenity)-n oinarritutako inplementazio bat eskeintzen da ideckia-ren oinarrizko paketean, liburutegi [honen](https://github.com/ideckia/dialogs-zenity) bidez. Inplementazio hau exekutagarriaren ondoko `dialogs` direktorioan dago, aplikazioak bertatik kargatuko baitu. Nahi adina pertsonalizatu daiteke, baita berri bat sortu ere.
 
 ## Actions
 
@@ -70,6 +75,7 @@ Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` f
 |   |-- another_action
 |       |-- index.js
 |       |-- dependencies.js
+|       |-+ node_modules
 ```
 ### Defektuzko ekintzak
 
@@ -79,7 +85,7 @@ Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` f
 * [Counter](https://github.com/ideckia/action_counter): Itema zenbatetan klikatu den kontatu. Atzerakontaketa ere posible da.
 * [Random color](https://github.com/ideckia/action_random-color): Ausazko kolore bat sortu eta botoiean erakutsi.
 * [Stopwatch](https://github.com/ideckia/action_stopwatch): Ekintza hau exekutatzean, botoian bertan erakutsiko den tenporizadore bat hasi edo pausatuko da.
-* [OBS-websocket](https://github.com/ideckia/action_obs-websocket): Websocket bidez OBS kontrolatzeko. [obs-websocket-js](https://www.npmjs.com/package/obs-websocket-js) erabiliz.
+* [OBS-websocket](https://github.com/ideckia/action_obs-websocket): **DEPRECATED** Websocket bidez OBS kontrolatzeko. [obs-websocket-js](https://www.npmjs.com/package/obs-websocket-js) erabiliz.
 * [Timezones](https://github.com/ideckia/action_timezones): Konfiguratutako lekuetan den ordua erakutsi.
 * [Worklog](https://github.com/ideckia/action_worklog): Zure eguneroko lana JSON fitxategi batean antolatu eta gordetzeko.
 * [FTP-Connect](https://github.com/ideckia/action_ftp-connect): Modu sinple eta azkarrean FTP batean konektatu.
@@ -87,7 +93,14 @@ Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` f
 * [Open weather](https://github.com/ideckia/action_open-weather): Konfiguratutako herrietako eguraldia erakutsi.
 * [Clementine control](https://github.com/ideckia/action_clementine-control): [Clementine](https://www.clementine-player.org/) kontrolatzeko.
 * [Mute mic](https://github.com/ideckia/action_mute-mic): Mikrofonoa mututu eta berriro martxan jartzeko.
-* [Toot](https://github.com/ideckia/action_toot): Mastodon-en toot bat publikatzeko
+* [Toot](https://github.com/ideckia/action_toot): Mastodon-en toot bat publikatzeko.
+* [Wait](https://github.com/ideckia/action_wait): Hurrengo ekintza exekutatu arte agindutako denbora itxaroten du.
+* [Countdown](https://github.com/ideckia/action_countdown): Atzera kontaketa
+* [Log-in](https://github.com/ideckia/action_log-in): Erabiltzaile izena eta pasahitza idatzi ondoren 'Sartu' sakatzen du (ekintza honek [Keyboard](https://github.com/ideckia/action_keyboard) erabiltzen du, derrigorrezkoa da).
+* [Color-picker](https://github.com/ideckia/action_color-picker): Xagua dagoen pixelaren kolorea erakusten da item-ean.
+* [Obs-control](https://github.com/ideckia/action_obs-control): Kontrolatu OBS Studio (aurretik zegoen [obs-websocket action](https://github.com/ideckia/action_obs-websocket) ordezkatzeko)
+* [KeePasXC](https://github.com/ideckia/action_keepassxc): Erabiltzaile izena eta pasahitza  [KeePassXC](https://keepassxc.org/) bidez kudeatzea. Ekintza honek [Log-in](https://github.com/ideckia/action_log-in) erabiltzen du, derrigorrezkoa da.
+* [Emoji](https://github.com/ideckia/action_emoji): Ausazko emojiak erakusten dira sakatzen den bakoitzean
 
 Ez zaizkizu ekintza hauek gustatzen? Alda itzazu edo [zurea sortu](#zure-ekintza-propioa-sortu) zure beharretara egokitzeko.
 

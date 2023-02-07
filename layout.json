@@ -17,7 +17,7 @@
 										{
 											"name": "random-color",
 											"props": {
-												"setText": true
+												"set_text": true
 											}
 										}
 									]
