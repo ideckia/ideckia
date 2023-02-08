@@ -165,7 +165,7 @@ jobs:
         latest: true
         fileName: keyboard-${{ matrix.os }}.zip
 
-    - name: Get action_keyboard
+    - name: Get action_color-picker
       uses: robinraju/release-downloader@v1.7
       with:
         repository: "ideckia/action_color-picker"
@@ -197,6 +197,7 @@ jobs:
     - name: Move files
       run: |
         7z x keyboard-${{ matrix.os }}.zip -o${{ matrix.os }}/actions
+        7z x color-picker-${{ matrix.os }}.zip -o${{ matrix.os }}/actions
         7z x dialogs-${{ matrix.os }}.zip -o${{ matrix.os }}
         7z x media-${{ matrix.os }}.zip -o${{ matrix.os }}
         mv ${{ matrix.SERVER_FILE }} ${{ matrix.os }}
