@@ -15,6 +15,7 @@
 									"bgColor": "ff00aa00",
 									"actions": [
 										{
+											"enabled": true,
 											"name": "random-color",
 											"props": {
 												"set_text": true
@@ -51,6 +52,7 @@
 									"bgColor": "ff00aa00",
 									"actions": [
 										{
+											"enabled": true,
 											"name": "counter",
 											"props": {
 												"initial": 10,
