@@ -131,14 +131,17 @@ jobs:
         include:
         - os: linux
           SERVER_FILE: ideckia-linux
+          TRAY_FILE: ideckia_tray_linux
           ARTIFACT: ideckia-linux
 
         - os: win
           SERVER_FILE: ideckia-win.exe
+          TRAY_FILE: ideckia_tray.exe
           ARTIFACT: ideckia-win
 
         - os: macos
           SERVER_FILE: ideckia-macos
+          TRAY_FILE: ideckia_tray_macos
           ARTIFACT: ideckia-macos
 
     steps:
@@ -179,6 +182,13 @@ jobs:
         latest: true
         fileName: dialogs-${{ matrix.os }}.zip
 
+    - name: Get tray executable
+      uses: robinraju/release-downloader@v1
+      with:
+        repository: "ideckia/tray"
+        latest: true
+        fileName: ${{ matrix.TRAY_FILE }}
+
     - name: Get MediaPlayer implementation
       uses: robinraju/release-downloader@v1.7
       with:
@@ -201,6 +211,8 @@ jobs:
         7z x dialogs-${{ matrix.os }}.zip -o${{ matrix.os }}
         7z x media-${{ matrix.os }}.zip -o${{ matrix.os }}
         mv ${{ matrix.SERVER_FILE }} ${{ matrix.os }}
+        mkdir ${{ matrix.os }}/tray
+        mv ${{ matrix.TRAY_FILE }} ${{ matrix.os }}/tray
         
     - uses: vimtor/action-zip@v1
       with:
