@@ -18,6 +18,20 @@ Zure sistemarentzako sortutako exekutagarriak eta oinarrizko layout bat [hemendi
  * Ez badu zerbitzariaren erantzunik jasotzen, IP eta portua eskuz sartzeko pantaila erakutsiko du.
 * Zure [layout-a](#layout-fitxategia) eskuz edo [editorea](#editorea) erabiliz edita dezakezu.
 
+### Linux erabiltzaileak
+
+#### Appindicator
+
+Leiho gabeko aplikazio bat denez, _systay_-n ikono bat erakusten du. Ideckia-k ikono hau erakusteko `libayatana-appindicator` liburutegia erabiltzen du. Ikonoa bistan ez badago ere aplikazioa martxan egon daiteke, baino feedback pixko bat izatea komeni da.
+
+Liburutegi hau Ubuntu eta deribatuetan defektuz dator instalatua.
+
+#### Komunikaziorako portua
+
+Baliteke zerbitzariak eta bezeroak komunikatzeko erabiltzen duten portua sistema eragileak irekita ez izatea. Hori irekitzeko komando hau exekutatu:
+
+`sudo ufw allow 8888/tcp comment 'Ideckiak erabiltzeko 8888 portua ireki'` (Ideckiak 8888 portua darabilela suposatuz)
+
 ## Kontzeptuak
 
 * Layout: _item_ multzo bat.

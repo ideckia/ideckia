@@ -18,6 +18,21 @@ Download prebuilt binaries and a basic layout from [here](https://github.com/ide
  * If it doesn't get any response from the server, it will show a screen to insert the IP and the port manually.
 * You can configure your [layout](#layout-file) by hand or using the [editor](#editor)
 
+### Linux users
+
+#### Appindicator
+
+As the application is headless, there is an icon in the systray. To show this icon Ideckia uses `libayatana-appindicator` library, which should be installed in the system. The app could be running even if there is no systray icon, but is preferable to have some feedback.
+
+This library is installed by default in Ubuntu and derivates.
+
+#### Communication port
+
+The port used for communication between server and client may be closed. To open that port, execute this command:
+
+
+`sudo ufw allow 8888/tcp comment 'Open port 8888 for Ideckia'` (Supposing Ideckia uses the port 8888)
+
 ## Concepts
 
 * Layout: Bunch of _items_

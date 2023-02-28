@@ -1,23 +1,10 @@
-* add [wait action](https://github.com/ideckia/action_wait): Delay (milliseconds) the execution of the next action
-* add [log-in action](https://github.com/ideckia/action_log-in): Write username (optional) and password and press enter
-* add [countdown action](https://github.com/ideckia/action_countdown): Countdown action
-* add [color-picker action](https://github.com/ideckia/action_color-picker): Show in the item the color of the pixel where the mouse is
-* add [obs-control action](https://github.com/ideckia/action_obs-control): Control OBS Studio (replacing former [obs-websocket action](https://github.com/ideckia/action_obs-websocket))
-* add [keepassxc action](https://github.com/ideckia/action_keepassxc): Get write the username and password from [KeePassXC](https://keepassxc.org/)
-* add [emoji action](https://github.com/ideckia/action_emoji): Shows a random emoji every time is clicked
-* [editor] remove unnecessary "add-item" buton
-* [editor] remove quotes from default values
-* [editor] Export directories from layout
-* [editor] Import and append a external layout to the current layout
-* [editor] added "remove icon" button. Remove icons from layout itself and all the references
-* [editor] Use default values when creating an action
-* add icon to the dialogs
-* added test_action.js script in the template
-* New dialog system. Now is possible to create custom UIs!
-* Support more image formats (Gif animations and text based emojis supported in client!)
-* Added a basic media player to be used from actions
-* added Action.enabled (enable and disable actions instead of removing them)
-* added new field ItemState.extraData to send data from an action to others
-* added 'warning' and 'calendar' to server.dialog
-* add textPosition to item state
-* add system tray support
+* Add a `.info` file to every action, dialogs and mediaplayer. With this information, the server is able to check if there is a newer version online and download it.
+* Logs are now stored in files. The logs directory is confirable in `app.props` file by `ideckia.logs.path` property. The directory will be accessible from the tray.
+* Old logs will be deleted automatically after days defined in `ideckia.logs.days-of-life` property. If you want to keep them, give a negative value.
+* Renamed `ideckia.log-level` property to `ideckia.logs.level`.
+* Added `ideckia.client-path` in `app.props` in case you want to add a PC client path. It will be accessible from the tray.
+* All actions will be reloaded if a change is detected in the actions directory.
+* [editor] fix for null ActionDescriptor.props
+* Added an plain JS asset in the [ideckia_server releases](https://github.com/ideckia/ideckia_server/releases) with no bundled NodeJs.
+* Updated [tray](https://github.com/ideckia/tray) version to load the tray menu from a JSON
+* Added 'About' item to tray to show some info about the application

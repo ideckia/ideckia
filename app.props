@@ -1,5 +1,8 @@
 ideckia.port=8888
 ideckia.layout-file-path=layout.json
 ideckia.actions-path=actions
-ideckia.log-level=error
+ideckia.logs.path=logs
+ideckia.logs.days-of-life=7
+ideckia.logs.level=error
+# ideckia.client-path=/path/to/the/client
 ideckia.auto-launch-enabled=false
