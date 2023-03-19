@@ -95,6 +95,7 @@ jobs:
     - name: Create folder
       run: |
         unzip actions.zip -d tmp/
+        rm actions.zip
 
     - name: Get action
       uses: robinraju/release-downloader@v1.7
