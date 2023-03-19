@@ -1,10 +1,11 @@
-* Add a `.info` file to every action, dialogs and mediaplayer. With this information, the server is able to check if there is a newer version online and download it.
-* Logs are now stored in files. The logs directory is confirable in `app.props` file by `ideckia.logs.path` property. The directory will be accessible from the tray.
-* Old logs will be deleted automatically after days defined in `ideckia.logs.days-of-life` property. If you want to keep them, give a negative value.
-* Renamed `ideckia.log-level` property to `ideckia.logs.level`.
-* Added `ideckia.client-path` in `app.props` in case you want to add a PC client path. It will be accessible from the tray.
-* All actions will be reloaded if a change is detected in the actions directory.
-* [editor] fix for null ActionDescriptor.props
-* Added an plain JS asset in the [ideckia_server releases](https://github.com/ideckia/ideckia_server/releases) with no bundled NodeJs.
-* Updated [tray](https://github.com/ideckia/tray) version to load the tray menu from a JSON
-* Added 'About' item to tray to show some info about the application
+* renamed action `keepassxc` to [keepassxc-entry](https://github.com/ideckia/action_keepassxc-entry/) to use the name for the new `keepassxc` action
+* add [keepassxc action](https://github.com/ideckia/action_keepassxc): Load all the password saved in the keepassxc database and creates an item for each
+* add [memory game](https://github.com/ideckia/action_memory): The tipical memory game in your client
+* [editor] Reload action descriptors list when `actions` changes
+* [editor] Bigger font size in action descriptions
+* Generate dynamic directories from actions. Actions can now return a directory structure to create dynamic directories from an item click
+* Added `ideckia.check-updates` to enable/disable checking updates for the server and actions
+* Fix linux client open from tray
+* Fix the haxe templates to copy hidden files
+* Fix deleting old log files
+* Icons now are sent cached to client avoiding duplicated base64 strings. Saves network traffic.

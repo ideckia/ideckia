@@ -4,5 +4,6 @@ ideckia.actions-path=actions
 ideckia.logs.path=logs
 ideckia.logs.days-of-life=7
 ideckia.logs.level=error
+ideckia.check-updates=true
 # ideckia.client-path=/path/to/the/client
 ideckia.auto-launch-enabled=false

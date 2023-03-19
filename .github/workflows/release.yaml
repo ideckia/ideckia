@@ -46,7 +46,7 @@ jobs:
       with:
         files: tmp
         dest: actions.zip
-        
+
     - name: Upload actions
       uses: actions/upload-artifact@v2
       with:
@@ -79,44 +79,47 @@ jobs:
           - countdown
           - keepassxc
           - emoji
+          - memory
 
     steps:
 
     - name: Create 'actions' folder
       run: |
         mkdir -p tmp
-        
+
     - name: Download actions
       uses: actions/download-artifact@v2
       with:
         name: actions
-        
+
     - name: Create folder
       run: |
-        7z x actions.zip -otmp/
+        unzip actions.zip -d tmp/
 
     - name: Get action
       uses: robinraju/release-downloader@v1.7
       with:
         repository: "ideckia/action_${{ matrix.action }}"
         latest: true
-        fileName: ${{ matrix.action }}.zip
-      
+        fileName: "*.zip"
+        zipBall: false
+        tarBall: false
+
     - name: Extract files
       run: |
-        7z x ${{ matrix.action }}.zip -otmp/actions
+        unzip "*.zip" -d tmp/actions
 
     - uses: vimtor/action-zip@v1
       with:
         files: tmp
         dest: actions.zip
-        
+
     - name: Upload actions
       uses: actions/upload-artifact@v2
       with:
         name: actions
         path: actions.zip
-        
+
   os_files:
     name: OS files
     needs: get_actions
@@ -145,18 +148,18 @@ jobs:
           ARTIFACT: ideckia-macos
 
     steps:
-    
+
     - uses: actions/checkout@v2
     
     - name: Download actions
       uses: actions/download-artifact@v2
       with:
         name: actions
-    
+
     - name: Create folder
       run: |
         mkdir -p ${{ matrix.os }}
-        7z x actions.zip -o${{ matrix.os }}
+        unzip actions.zip -d ${{ matrix.os }}
         mv app.props ${{ matrix.os }}
         mv icon_mini.png ${{ matrix.os }}/icon.png
         mv layout.json ${{ matrix.os }}
@@ -206,14 +209,14 @@ jobs:
 
     - name: Move files
       run: |
-        7z x keyboard-${{ matrix.os }}.zip -o${{ matrix.os }}/actions
-        7z x color-picker-${{ matrix.os }}.zip -o${{ matrix.os }}/actions
-        7z x dialogs-${{ matrix.os }}.zip -o${{ matrix.os }}
-        7z x media-${{ matrix.os }}.zip -o${{ matrix.os }}
+        unzip keyboard-${{ matrix.os }}.zip -d ${{ matrix.os }}/actions
+        unzip color-picker-${{ matrix.os }}.zip -d ${{ matrix.os }}/actions
+        unzip dialogs-${{ matrix.os }}.zip -d ${{ matrix.os }}
+        unzip media-${{ matrix.os }}.zip -d ${{ matrix.os }}
         mv ${{ matrix.SERVER_FILE }} ${{ matrix.os }}
         mkdir ${{ matrix.os }}/tray
         mv ${{ matrix.TRAY_FILE }} ${{ matrix.os }}/tray
-        
+
     - uses: vimtor/action-zip@v1
       with:
         files: ${{ matrix.os }}
@@ -224,7 +227,7 @@ jobs:
       with:
         name: ${{ matrix.ARTIFACT }}
         path: ${{ matrix.ARTIFACT }}.zip
-        
+
   release_assets:
     name: Release assets
     needs:
@@ -238,12 +241,12 @@ jobs:
           - ideckia-win
           - ideckia-macos
     steps:
-    
+
     - name: Download artifact
       uses: actions/download-artifact@v2
       with:
         name: ${{ matrix.os-ideckia }}
-      
+
     - name: Upload release assets
       uses: actions/upload-release-asset@v1
       env:
