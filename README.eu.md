@@ -113,8 +113,9 @@ Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` f
 * [Log-in](https://github.com/ideckia/action_log-in): Erabiltzaile izena eta pasahitza idatzi ondoren 'Sartu' sakatzen du (ekintza honek [Keyboard](https://github.com/ideckia/action_keyboard) erabiltzen du, derrigorrezkoa da).
 * [Color-picker](https://github.com/ideckia/action_color-picker): Xagua dagoen pixelaren kolorea erakusten da item-ean.
 * [Obs-control](https://github.com/ideckia/action_obs-control): Kontrolatu OBS Studio (aurretik zegoen [obs-websocket action](https://github.com/ideckia/action_obs-websocket) ordezkatzeko)
-* [KeePasXC](https://github.com/ideckia/action_keepassxc): Erabiltzaile izena eta pasahitza  [KeePassXC](https://keepassxc.org/) bidez kudeatzea. Ekintza honek [Log-in](https://github.com/ideckia/action_log-in) erabiltzen du, derrigorrezkoa da.
+* [KeePasXC](https://github.com/ideckia/action_keepassxc): Erabiltzaile izen eta pasahitz guztiak hartzen ditu [KeePassXC](https://keepassxc.org/) datu base batetik. DBko sarrera bakoitzarekin bezeroan elementu klikagarri bat sortuko da. Ekintza honek [Log-in](https://github.com/ideckia/action_log-in) erabiltzen du, derrigorrezkoa da.
 * [Emoji](https://github.com/ideckia/action_emoji): Ausazko emojiak erakusten dira sakatzen den bakoitzean
+* [Memory](https://github.com/ideckia/action_memory): Memoria joko klasikoa zure bezeroan
 
 Ez zaizkizu ekintza hauek gustatzen? Alda itzazu edo [zurea sortu](#zure-ekintza-propioa-sortu) zure beharretara egokitzeko.
 
