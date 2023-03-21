@@ -72,7 +72,11 @@ The text is {b:{i:{u:bold, italic and underlined}}}. And this text will be {colo
 
 ### Dialogs
 
-The dialog system interface is defined in the [API](https://github.com/ideckia/ideckia_api/tree/develop/api/dialog/Dialog.hx). An implementation based on [zenity](https://github.com/ncruces/zenity) is provided in the basic package of ideckia from [here](https://github.com/ideckia/dialogs-zenity). This implementation is stored in `dialogs` folder next to the executable, where the application will look for it. It can be customized as you want, you can even create a new one.
+The actions have access to the server dialog system. This system interface is defined in the [API](https://github.com/ideckia/ideckia_api/blob/develop/api/dialog/IDialog.hx). An implementation based on [clialogs](https://github.com/ideckia/clialogs) is provided in the basic package of ideckia from [here](https://github.com/ideckia/dialogs-clialogs). This implementation is stored in `dialogs` folder next to the executable, where the application will look for it. It can be customized as you want, you can even create a new one.
+
+### Media player
+
+The actions have access to the server media player. This media player interface is defined in the [API](https://github.com/ideckia/ideckia_api/blob/develop/api/media/IMediaPlayer.hx). An implementation is provided in the basic package of ideckia from [here](https://github.com/ideckia/mediaplayer-rust). This implementation is stored in `media` folder next to the executable, where the application will look for it. It can be customized as you want, you can even create a new one.
 
 ## Actions
 

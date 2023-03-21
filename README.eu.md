@@ -71,7 +71,11 @@ Testu hau {b:{i:{u:lodia, etzana eta azpimarratua}}} da. Eta testu hau, berriz, 
 
 ### Elkarrizketa-koadroak
 
-Elkarrizketa-koadroen interfazea [API-an](https://github.com/ideckia/ideckia_api/tree/develop/api/dialog/Dialog.hx) dago definiturik. [zenity](https://github.com/ncruces/zenity)-n oinarritutako inplementazio bat eskeintzen da ideckia-ren oinarrizko paketean, liburutegi [honen](https://github.com/ideckia/dialogs-zenity) bidez. Inplementazio hau exekutagarriaren ondoko `dialogs` direktorioan dago, aplikazioak bertatik kargatuko baitu. Nahi adina pertsonalizatu daiteke, baita berri bat sortu ere.
+Ekintzek zerbitzariko elkarrizketa-koadroen sistema atzi dezakete. Elkarrizketa-koadroen sistema honen interfazea [API-an](https://github.com/ideckia/ideckia_api/blob/develop/api/dialog/IDialog.hx) dago definiturik. [clialogs](https://github.com/ideckia/clialogs)-n oinarritutako inplementazio bat eskeintzen da ideckia-ren oinarrizko paketean, liburutegi [honen](https://github.com/ideckia/dialogs-clialogs) bidez. Inplementazio hau exekutagarriaren ondoko `dialogs` direktorioan dago, aplikazioak bertatik kargatuko baitu. Nahi adina pertsonalizatu daiteke, baita berri bat sortu ere.
+
+### Audioak
+
+Ekintzek zerbitzariko audio sistema atzi dezakete. Audio sistema honen interfazea [API-an](https://github.com/ideckia/ideckia_api/blob/develop/api/media/IMediaPlayer.hx) dago definiturik. ideckia-ren oinarrizko paketean, liburutegi [honen](https://github.com/ideckia/mediaplayer-rust) bidez eskeintzen da. Inplementazio hau exekutagarriaren ondoko `media` direktorioan dago, aplikazioak bertatik kargatuko baitu. Nahi adina pertsonalizatu daiteke, baita berri bat sortu ere.
 
 ## Actions
 
