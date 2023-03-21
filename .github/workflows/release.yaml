@@ -78,6 +78,7 @@ jobs:
           - wait
           - countdown
           - keepassxc
+          - keepassxc-entry
           - emoji
           - memory
 
