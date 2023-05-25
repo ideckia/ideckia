@@ -9,6 +9,8 @@ Control your computer (GNU/Linux, Windows, Mac) with a mobile client.
 
 Download prebuilt binaries and a basic layout from [here](https://github.com/ideckia/ideckia/releases) (the server code is hosted [here](https://github.com/ideckia/ideckia_server)). The client app is [here](https://github.com/ideckia/mobile_client/releases).
 
+[Here](https://dev.to/josuigoa/open-source-streamdeck-alternative-1gf3) is an introductory post for ideckia in dev.to
+
 ## How to get it working
 
 * Execute the downloaded binary for the computer. When it runs will show the IP and the port where the server is running. This port can be configured in the `app.props` file.
