@@ -112,7 +112,7 @@ This `index.js` file must have [this structure](https://github.com/ideckia/ideck
 * [FTP-Connect](https://github.com/ideckia/action_ftp-connect): Connect to FTP in a simple and fast way.
 * [SSH-Connect](https://github.com/ideckia/action_ssh-connect): Connect to SSH in a simple and fast way.
 * [Open weather](https://github.com/ideckia/action_open-weather): Show the weather in the configured towns.
-* [Clementine control](https://github.com/ideckia/action_clementine-control): Control [Clementine](https://www.clementine-player.org/).
+* [Clementine control](https://github.com/ideckia/action_clementine-control): **DEPRECATED** Control [Clementine](https://www.clementine-player.org/).
 * [Mute mic](https://github.com/ideckia/action_mute-mic): Mute / unmute microphone.
 * [Toot](https://github.com/ideckia/action_toot): Publish a toot in mastodon.
 * [Wait](https://github.com/ideckia/action_wait): Waits given milliseconds until the next action.
@@ -120,7 +120,7 @@ This `index.js` file must have [this structure](https://github.com/ideckia/ideck
 * [Log-in](https://github.com/ideckia/action_log-in): Writes username and password and presses 'Enter' (this action uses [Keyboard](https://github.com/ideckia/action_keyboard), it is mandatory).
 * [Color-picker](https://github.com/ideckia/action_color-picker): Show in the item the color of the pixel where the mouse is.
 * [Obs-control](https://github.com/ideckia/action_obs-control): Control OBS Studio (replacing former [obs-websocket action](https://github.com/ideckia/action_obs-websocket))
-* [KeePasXC](https://github.com/ideckia/action_keepassxc): Gets all the username and passwords from a [KeePassXC](https://keepassxc.org/) database and creates an item for each. This action uses [Log-in](https://github.com/ideckia/action_log-in), it is mandatory.
+* [KeePassXC](https://github.com/ideckia/action_keepassxc): Gets all the username and passwords from a [KeePassXC](https://keepassxc.org/) database and creates an item for each. This action uses [Log-in](https://github.com/ideckia/action_log-in), it is mandatory.
 * [Emoji](https://github.com/ideckia/action_emoji): Shows a random emoji every time is clicked
 * [Memory](https://github.com/ideckia/action_memory): The classic memory game in your client
 
@@ -134,7 +134,8 @@ Next to the `index.js` file of each action can be a file called `presets.json` w
 
 ### Create your own action
 
-Execute `ideckia --new-action` to create a new action from a existing template.
+Open the [editor](http://localhost:8888/editor)
+  * Click the `create new action` button
   * Select which template do you want to use as base. Current options Haxe and JavaScript
   * Select the name for the action.
   * Write a description for the action (optional).
@@ -151,7 +152,7 @@ Execute `ideckia --export-dirs _main_,develop,gaming` to export directories name
 
 ## Editor
 
-Open your browser and go to [http://localhost:8888/editor](http://localhost:8888/editor) (the port is the one where the server is running).
+Open your browser and go to [http://localhost:8888/editor](http://localhost:8888/editor) (the port is the one where the server is running, default is 8888).
 
 ### Customize editor
 
@@ -159,4 +160,4 @@ When serving the editor web, Ideckia looks for the each of the editor files (`in
 
 Loading files in this way, you can customize only the CSS creating a new file in the path `editor/style.css` next to the `ideckia` executable. The `index.html` and `app.js` files will be loaded from the app itself and the CSS file will be the newly created.
 
-Or you can create an entire new editor ovewriting the three files :-).
+Or you can create an entire new editor overwriting the three files :-).

@@ -109,7 +109,7 @@ Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` f
 * [FTP-Connect](https://github.com/ideckia/action_ftp-connect): Modu sinple eta azkarrean FTP batean konektatu.
 * [SSH-Connect](https://github.com/ideckia/action_ssh-connect): Modu sinple eta azkarrean SSH batean konektatu.
 * [Open weather](https://github.com/ideckia/action_open-weather): Konfiguratutako herrietako eguraldia erakutsi.
-* [Clementine control](https://github.com/ideckia/action_clementine-control): [Clementine](https://www.clementine-player.org/) kontrolatzeko.
+* [Clementine control](https://github.com/ideckia/action_clementine-control): **DEPRECATED** [Clementine](https://www.clementine-player.org/) kontrolatzeko.
 * [Mute mic](https://github.com/ideckia/action_mute-mic): Mikrofonoa mututu eta berriro martxan jartzeko.
 * [Toot](https://github.com/ideckia/action_toot): Mastodon-en toot bat publikatzeko.
 * [Wait](https://github.com/ideckia/action_wait): Hurrengo ekintza exekutatu arte agindutako denbora itxaroten du.
@@ -117,7 +117,7 @@ Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` f
 * [Log-in](https://github.com/ideckia/action_log-in): Erabiltzaile izena eta pasahitza idatzi ondoren 'Sartu' sakatzen du (ekintza honek [Keyboard](https://github.com/ideckia/action_keyboard) erabiltzen du, derrigorrezkoa da).
 * [Color-picker](https://github.com/ideckia/action_color-picker): Xagua dagoen pixelaren kolorea erakusten da item-ean.
 * [Obs-control](https://github.com/ideckia/action_obs-control): Kontrolatu OBS Studio (aurretik zegoen [obs-websocket action](https://github.com/ideckia/action_obs-websocket) ordezkatzeko)
-* [KeePasXC](https://github.com/ideckia/action_keepassxc): Erabiltzaile izen eta pasahitz guztiak hartzen ditu [KeePassXC](https://keepassxc.org/) datu base batetik. DBko sarrera bakoitzarekin bezeroan elementu klikagarri bat sortuko da. Ekintza honek [Log-in](https://github.com/ideckia/action_log-in) erabiltzen du, derrigorrezkoa da.
+* [KeePassXC](https://github.com/ideckia/action_keepassxc): Erabiltzaile izen eta pasahitz guztiak hartzen ditu [KeePassXC](https://keepassxc.org/) datu base batetik. DBko sarrera bakoitzarekin bezeroan elementu klikagarri bat sortuko da. Ekintza honek [Log-in](https://github.com/ideckia/action_log-in) erabiltzen du, derrigorrezkoa da.
 * [Emoji](https://github.com/ideckia/action_emoji): Ausazko emojiak erakusten dira sakatzen den bakoitzean
 * [Memory](https://github.com/ideckia/action_memory): Memoria joko klasikoa zure bezeroan
 
@@ -131,7 +131,8 @@ Ekintza bakoitzaren `index.js` fitxategiaren ondoan `presets.json` fitxategi bat
 
 ### Zure ekintza propioa sortu
 
-Exekutatu `ideckia --new-action` txantilioi batetik ekintza berri bat sortzeko.
+Ireki [editorea](http://localhost:8888/editor)
+  * Sakatu `create new action` botoia
   * Zein txantilioietan oinarritu nahi duzu aukeratu. Oraingoz Haxe eta JavaScript daude.
   * Ekintzaren izena idatzi.
   * Ekintzaren deskripzio bat idatzi (aukeran).
@@ -148,7 +149,7 @@ Exekutatu `ideckia --export-dirs _main_,develop,gaming` `_main_`, `develop` eta 
 
 ## Editorea
 
-Zure nabigatzailean helbide honetara jo [http://localhost:8888/editor](http://localhost:8888/editor) (portua zure zerbitzaria martxan dagoena izanen da).
+Zure nabigatzailean helbide honetara jo [http://localhost:8888/editor](http://localhost:8888/editor) (portua zure zerbitzaria martxan dagoena izanen da, defektuz 8888).
 
 ### Editorea pertsonalizatu
 
