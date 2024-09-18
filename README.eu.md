@@ -7,28 +7,32 @@ Mugikorraren bidez ordenagailua (GNU/Linux, Windows, Mac) kontrolatzeko programa
 * Ordenagailua kontrolatzeko botoiak sortu (komandoak exekutatu, OBS kontrolatu, laster-teklak, eguraldia erakutsi...)
 * Botoi horiek direktorio desberdinetan antolatu (garatzailea, streaming, musika, jokoak...)
 
-Zure sistemarentzako sortutako exekutagarriak eta oinarrizko layout bat [hemendik](https://github.com/ideckia/ideckia/releases) deskargatu (zerbitzariaren kodea [hemen](https://github.com/ideckia/ideckia_server) dago). Mugikorreko aplikazioa [hemen](https://github.com/ideckia/mobile_client/releases) dago
+Zure sistemarentzako sortutako exekutagarriak eta oinarrizko layout bat [hemendik](https://github.com/ideckia/ideckia/releases) deskargatu (ordenagailuko aplikazioaren kodea [hemen](https://github.com/ideckia/ideckia_core) dago). Mugikorreko aplikazioa [hemen](https://github.com/ideckia/mobile_client/releases) dago
 
 ## Nola jarri martxan
 
 * Deskargatutako exekutagarria martxan jarri. Hasieratzen denean martxan dagoen IP zenbakia eta portua erakutsiko ditu. Portua `app.props` fitxategian aldatu daiteke.
 * Zure firewall-ean Ideckia baimendu, bezeroak sare lokalean aurki dezan.
 * Ordenagailua eta mugikorra sare berean konektatuak daudela egiaztatu.
-* Mugikorreko aplikazioa abiarazi. Automatikoki bilatuko du zerbitzaria 192.168.1.0-255 tartean eta 8888 portuan.
- * Ez badu zerbitzariaren erantzunik jasotzen, IP eta portua eskuz sartzeko pantaila erakutsiko du.
+* Mugikorreko aplikazioa abiarazi. Automatikoki bilatuko du ordenagailua 192.168.1.0-255 tartean eta 8888 portuan.
+ * Ez badu ordenagailutik erantzunik jasotzen, IP eta portua eskuz sartzeko pantaila erakutsiko du.
 * Zure [layout-a](#layout-fitxategia) eskuz edo [editorea](#editorea) erabiliz edita dezakezu.
 
 ### Linux erabiltzaileak
 
 #### Appindicator
 
-Leiho gabeko aplikazio bat denez, _systay_-n ikono bat erakusten du. Ideckia-k ikono hau erakusteko `libayatana-appindicator` liburutegia erabiltzen du. Ikonoa bistan ez badago ere aplikazioa martxan egon daiteke, baino feedback pixko bat izatea komeni da.
+Leiho gabeko aplikazio bat denez, sistemako erretiluan ikono bat erakusten du. Ideckia-k ikono hau erakusteko `libayatana-appindicator` liburutegia erabiltzen du. Ikonoa bistan ez badago ere aplikazioa martxan egon daiteke, baino feedback pixko bat izatea komeni da.
 
-Liburutegi hau Ubuntu eta deribatuetan defektuz dator instalatua.
+Liburutegi hau Ubuntu eta deribatuetan defektuz egon behar luke instalatua.
+
+Ez badago, komando honekin instala dezakezu:
+
+`sudo apt install libayatana-appindicator3-1`
 
 #### Komunikaziorako portua
 
-Baliteke zerbitzariak eta bezeroak komunikatzeko erabiltzen duten portua sistema eragileak irekita ez izatea. Hori irekitzeko komando hau exekutatu:
+Baliteke ordenagailuak eta bezeroak komunikatzeko erabiltzen duten portua sistema eragileak irekita ez izatea. Hori irekitzeko komando hau exekutatu:
 
 `sudo ufw allow 8888/tcp comment 'Ideckiak erabiltzeko 8888 portua ireki'` (Ideckiak 8888 portua darabilela suposatuz)
 
@@ -71,17 +75,17 @@ Testu hau {b:{i:{u:lodia, etzana eta azpimarratua}}} da. Eta testu hau, berriz, 
 
 ### Elkarrizketa-koadroak
 
-Ekintzek zerbitzariko elkarrizketa-koadroen sistema atzi dezakete. Elkarrizketa-koadroen sistema honen interfazea [API-an](https://github.com/ideckia/ideckia_api/blob/develop/api/dialog/IDialog.hx) dago definiturik. [clialogs](https://github.com/ideckia/clialogs)-n oinarritutako inplementazio bat eskeintzen da ideckia-ren oinarrizko paketean, liburutegi [honen](https://github.com/ideckia/dialogs-clialogs) bidez. Inplementazio hau exekutagarriaren ondoko `dialogs` direktorioan dago, aplikazioak bertatik kargatuko baitu. Nahi adina pertsonalizatu daiteke, baita berri bat sortu ere.
+Ekintzek zerbitzariko elkarrizketa-koadroen sistema atzi dezakete. Elkarrizketa-koadroen sistema honen interfazea [API-an](https://github.com/ideckia/ideckia_api/blob/main/api/dialog/IDialog.hx) dago definiturik. [clialogs](https://github.com/ideckia/clialogs)-n oinarritutako inplementazio bat eskeintzen da ideckia-ren oinarrizko paketean, liburutegi [honen](https://github.com/ideckia/dialogs-clialogs) bidez. Inplementazio hau exekutagarriaren ondoko `dialogs` direktorioan dago, aplikazioak bertatik kargatuko baitu. Nahi adina pertsonalizatu daiteke, baita berri bat sortu ere.
 
 ### Audioak
 
-Ekintzek zerbitzariko audio sistema atzi dezakete. Audio sistema honen interfazea [API-an](https://github.com/ideckia/ideckia_api/blob/develop/api/media/IMediaPlayer.hx) dago definiturik. ideckia-ren oinarrizko paketean, liburutegi [honen](https://github.com/ideckia/mediaplayer-rust) bidez eskeintzen da. Inplementazio hau exekutagarriaren ondoko `media` direktorioan dago, aplikazioak bertatik kargatuko baitu. Nahi adina pertsonalizatu daiteke, baita berri bat sortu ere.
+Ekintzek zerbitzariko audio sistema atzi dezakete. Audio sistema honen interfazea [API-an](https://github.com/ideckia/ideckia_api/blob/main/api/media/IMediaPlayer.hx) dago definiturik. ideckia-ren oinarrizko paketean, liburutegi [honen](https://github.com/ideckia/mediaplayer-rust) bidez eskeintzen da. Inplementazio hau exekutagarriaren ondoko `media` direktorioan dago, aplikazioak bertatik kargatuko baitu. Nahi adina pertsonalizatu daiteke, baita berri bat sortu ere.
 
 ## Actions
 
 Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` fitxategian konfiguragarri). Ekintza bakoitza bere direktorioan dago definitua eta `index.js` fitxategi bat du bertan.
 
-`index.js` fitxategi honek [egitura hau](https://github.com/ideckia/ideckia_api#action-structure) izan behar du, zerbitzariak kargatu eta exekutatu ahal izateko.
+`index.js` fitxategi honek [egitura hau](https://github.com/ideckia/ideckia_api#action-structure) izan behar du, ordenagailuko aplikazioak kargatu eta exekutatu ahal izateko.
 
 ```
 |-- ideckia
@@ -149,7 +153,15 @@ Exekutatu `ideckia --export-dirs _main_,develop,gaming` `_main_`, `develop` eta 
 
 ## Editorea
 
-Zure nabigatzailean helbide honetara jo [http://localhost:8888/editor](http://localhost:8888/editor) (portua zure zerbitzaria martxan dagoena izanen da, defektuz 8888).
+Zure nabigatzailean helbide honetara jo [http://localhost:8888/editor](http://localhost:8888/editor) (portua zure ordenagailuko aplikazioa martxan dagoena izanen da, defektuz 8888).
+
+### Editorea itzultzen
+
+Ideckia-k ez du erabiltzaile interfaze izugarririk, baina duen hori edozein hizkuntzatara itzul daiteke. [Editorea](http://localhost:8888/editor) irekiz gero, 'Itzul nazazu!' botoi bat ikusiko duzu. Bertan klikatu eta ideckia-k ingeles itzulpen fitxategia utziko du `/path/to/ideckia/loc/your_locale_code_here.txt` bide honetan, nahi den bezala itzultzeko. Lehenengo eta behin, fitxategia berrizendatu beharko da itzuli nahi den hizkuntzaren kodearekin ('es_ES.txt' gaztelerarentzat, 'fr_FR.txt' frantsesarentzat...).
+
+Itzulpena ikusi ahal izateko, kargatu nahi den hizkuntza adierazio behar zaio ideckia-ri. `app.props` fitxategiko `ideckia.locale=your_code` propietatea editatuz egin daiteke hori.
+
+Oharra: Aplikazioaren mugak direla eta, sistemako erretiluko ikonoan dagoen menua itzulia ikusteko, aplikazioa berrabiarazi behar da itzulpena egin eta gero. Gainontzeko testuak editorea birkargatzean agertuko dira.
 
 ### Editorea pertsonalizatu
 

@@ -7,17 +7,17 @@ Control your computer (GNU/Linux, Windows, Mac) with a mobile client.
 * Create multiple buttons to control your computer (run commands, control OBS, hotkeys, display weather...)
 * Organize those buttons in different directories (developer, streamer, music, games...)
 
-Download prebuilt binaries and a basic layout from [here](https://github.com/ideckia/ideckia/releases) (the server code is hosted [here](https://github.com/ideckia/ideckia_server)). The client app is [here](https://github.com/ideckia/mobile_client/releases).
+Download prebuilt binaries and a basic layout from [here](https://github.com/ideckia/ideckia/releases) (the core code is hosted [here](https://github.com/ideckia/ideckia_core)). The client app is [here](https://github.com/ideckia/mobile_client/releases).
 
 [Here](https://dev.to/josuigoa/open-source-streamdeck-alternative-1gf3) is an introductory post for ideckia in dev.to
 
 ## How to get it working
 
-* Execute the downloaded binary for the computer. When it runs will show the IP and the port where the server is running. This port can be configured in the `app.props` file.
+* Execute the downloaded binary for the computer. When it runs will show the IP and the port where the core is running. This port can be configured in the `app.props` file.
 * Allow Ideckia in your firewall so it can be found by the mobile client in local network.
 * Be sure to have the computer and the mobile client connected to the same network.
-* Open up the client app. It will look for the server in the IP range 192.168.1.xxx and the 8888 port.
- * If it doesn't get any response from the server, it will show a screen to insert the IP and the port manually.
+* Open up the client app. It will look for the core in the IP range 192.168.1.xxx and the 8888 port.
+ * If it doesn't get any response from the core, it will show a screen to insert the IP and the port manually.
 * You can configure your [layout](#layout-file) by hand or using the [editor](#editor)
 
 ### Linux users
@@ -26,12 +26,15 @@ Download prebuilt binaries and a basic layout from [here](https://github.com/ide
 
 As the application is headless, there is an icon in the systray. To show this icon Ideckia uses `libayatana-appindicator` library, which should be installed in the system. The app could be running even if there is no systray icon, but is preferable to have some feedback.
 
-This library is installed by default in Ubuntu and derivates.
+This library should be installed by default in Ubuntu and derivates.
+
+If it isn't, you can install it with this command:
+
+`sudo apt install libayatana-appindicator3-1`
 
 #### Communication port
 
-The port used for communication between server and client may be closed. To open that port, execute this command:
-
+The port used for communication between core and client may be closed. To open that port, execute this command:
 
 `sudo ufw allow 8888/tcp comment 'Open port 8888 for Ideckia'` (Supposing Ideckia uses the port 8888)
 
@@ -74,17 +77,17 @@ The text is {b:{i:{u:bold, italic and underlined}}}. And this text will be {colo
 
 ### Dialogs
 
-The actions have access to the server dialog system. This system interface is defined in the [API](https://github.com/ideckia/ideckia_api/blob/develop/api/dialog/IDialog.hx). An implementation based on [clialogs](https://github.com/ideckia/clialogs) is provided in the basic package of ideckia from [here](https://github.com/ideckia/dialogs-clialogs). This implementation is stored in `dialogs` folder next to the executable, where the application will look for it. It can be customized as you want, you can even create a new one.
+The actions have access to the core dialog system. This system interface is defined in the [API](https://github.com/ideckia/ideckia_api/blob/main/api/dialog/IDialog.hx). An implementation based on [clialogs](https://github.com/ideckia/clialogs) is provided in the basic package of ideckia from [here](https://github.com/ideckia/dialogs-clialogs). This implementation is stored in `dialogs` folder next to the executable, where the application will look for it. It can be customized as you want, you can even create a new one.
 
 ### Media player
 
-The actions have access to the server media player. This media player interface is defined in the [API](https://github.com/ideckia/ideckia_api/blob/develop/api/media/IMediaPlayer.hx). An implementation is provided in the basic package of ideckia from [here](https://github.com/ideckia/mediaplayer-rust). This implementation is stored in `media` folder next to the executable, where the application will look for it. It can be customized as you want, you can even create a new one.
+The actions have access to the core media player. This media player interface is defined in the [API](https://github.com/ideckia/ideckia_api/blob/main/api/media/IMediaPlayer.hx). An implementation is provided in the basic package of ideckia from [here](https://github.com/ideckia/mediaplayer-rust). This implementation is stored in `media` folder next to the executable, where the application will look for it. It can be customized as you want, you can even create a new one.
 
 ## Actions
 
 Actions sources are available in the `actions` folder usually (configurable via `app.props` file next to the executable). Every action is defined in it's own folder and an `index.js` file in it.
 
-This `index.js` file must have [this structure](https://github.com/ideckia/ideckia_api#action-structure) to be called from the server when loaded and executed
+This `index.js` file must have [this structure](https://github.com/ideckia/ideckia_api#action-structure) to be called from the core when loaded and executed
 
 ```
 |-- ideckia
@@ -152,7 +155,7 @@ Execute `ideckia --export-dirs _main_,develop,gaming` to export directories name
 
 ## Editor
 
-Open your browser and go to [http://localhost:8888/editor](http://localhost:8888/editor) (the port is the one where the server is running, default is 8888).
+Open your browser and go to [http://localhost:8888/editor](http://localhost:8888/editor) (the port is the one where the core is running, default is 8888).
 
 ### Customize editor
 
