@@ -1,20 +1,28 @@
 # ideckia: Hackable and open macro deck
 
-## Zertarako da?
+## Zer da?
 
 Mugikorraren bidez ordenagailua (GNU/Linux, Windows, Mac) kontrolatzeko programa bat.
 
 * Ordenagailua kontrolatzeko botoiak sortu (komandoak exekutatu, OBS kontrolatu, laster-teklak, eguraldia erakutsi...)
 * Botoi horiek direktorio desberdinetan antolatu (garatzailea, streaming, musika, jokoak...)
 
-Zure sistemarentzako sortutako exekutagarriak eta oinarrizko layout bat [hemendik](https://github.com/ideckia/ideckia/releases) deskargatu (ordenagailuko aplikazioaren kodea [hemen](https://github.com/ideckia/ideckia_core) dago). Mugikorreko aplikazioa [hemen](https://github.com/ideckia/mobile_client/releases) dago
+Aplikazioak bi zati ditu:
+
+* muina: kontrolatu nahi dugun ordenagailuan exekutatuko den aplikazioa.
+* bezeroa: muinari aginduak bidaltzen dizkion aplikazioa. Orri honetan mugikorra erabiliko dugu.
 
 ## Nola jarri martxan
 
-* Deskargatutako exekutagarria martxan jarri. Hasieratzen denean martxan dagoen IP zenbakia eta portua erakutsiko ditu. Portua `app.props` fitxategian aldatu daiteke.
+Muina:
+* Zure sistema eragilearentzako exekutagarriak eta oinarrizko layout bat [hemendik](https://github.com/ideckia/ideckia/releases) deskargatu.
+* Deskargatutako exekutagarria martxan jarri. Komunikaziorako erabiliko den portua defektuz 8888 da. Arazorik balego `app.props` fitxategian aldatu daiteke.
 * Zure firewall-ean Ideckia baimendu, bezeroak sare lokalean aurki dezan.
 * Ordenagailua eta mugikorra sare berean konektatuak daudela egiaztatu.
-* Mugikorreko aplikazioa abiarazi. Automatikoki bilatuko du ordenagailua 192.168.1.0-255 tartean eta 8888 portuan.
+
+Bezeroa:
+* Mugikorreko aplikazioa [hemendik](https://github.com/ideckia/mobile_client/releases) deskargatu eta instalatu.
+* Mugikorreko aplikazioa abiarazi. Automatikoki bilatuko du ordenagailua sareko IP 192.168.1.0-255 tartean eta 8888 portuan.
  * Ez badu ordenagailutik erantzunik jasotzen, IP eta portua eskuz sartzeko pantaila erakutsiko du.
 * Zure [layout-a](#layout-fitxategia) eskuz edo [editorea](#editorea) erabiliz edita dezakezu.
 

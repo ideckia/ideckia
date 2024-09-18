@@ -1,21 +1,29 @@
 # ideckia: Hackable and open macro deck
 
-## What is it for?
+## What is it?
 
 Control your computer (GNU/Linux, Windows, Mac) with a mobile client.
 
 * Create multiple buttons to control your computer (run commands, control OBS, hotkeys, display weather...)
 * Organize those buttons in different directories (developer, streamer, music, games...)
 
-Download prebuilt binaries and a basic layout from [here](https://github.com/ideckia/ideckia/releases) (the core code is hosted [here](https://github.com/ideckia/ideckia_core)). The client app is [here](https://github.com/ideckia/mobile_client/releases).
+The application has two parts:
+
+* core: an application that runs in the computer you want to control.
+* client: the application that sends commands to the core. Here is explained how to use with a mobile phone.
 
 [Here](https://dev.to/josuigoa/open-source-streamdeck-alternative-1gf3) is an introductory post for ideckia in dev.to
 
 ## How to get it working
 
-* Execute the downloaded binary for the computer. When it runs will show the IP and the port where the core is running. This port can be configured in the `app.props` file.
+Core:
+* Download prebuilt binaries and a basic layout from [here](https://github.com/ideckia/ideckia/releases).
+* Execute the downloaded binary for the computer. The communication default port is 8888. If there is any problem, the port can be configured in the `app.props` file.
 * Allow Ideckia in your firewall so it can be found by the mobile client in local network.
 * Be sure to have the computer and the mobile client connected to the same network.
+
+Client:
+* Download the client app is [here](https://github.com/ideckia/mobile_client/releases) and install it.
 * Open up the client app. It will look for the core in the IP range 192.168.1.xxx and the 8888 port.
  * If it doesn't get any response from the core, it will show a screen to insert the IP and the port manually.
 * You can configure your [layout](#layout-file) by hand or using the [editor](#editor)
@@ -156,6 +164,14 @@ Execute `ideckia --export-dirs _main_,develop,gaming` to export directories name
 ## Editor
 
 Open your browser and go to [http://localhost:8888/editor](http://localhost:8888/editor) (the port is the one where the core is running, default is 8888).
+
+### Localization
+
+Ideckia hasn't a lot of UI but the little it has is localizable. If you open the [editor](http://localhost:8888/editor), you can see a button with the label "Localize me!". Click on it and ideckia will put the english localization file in the `/path/to/ideckia/loc/your_locale_code_here.txt` to localize as you want. The idea is to rename that file with the locale code you want ('es_ES.txt' for Spain spanish, 'fr_FR.txt' for France french...).
+
+To see your localization in action, you must configure ideckia to use it. Yow can do it by editing the `ideckia.locale=your_code` in the `app.props` file.
+
+Note: Due a limitation of the application, in order to see the texts of the tray icon localized, the application needs to be restarted. The other texts will be loaded when you reload the editor.
 
 ### Customize editor
 
