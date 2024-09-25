@@ -46,7 +46,7 @@ jobs:
           dest: actions.zip
 
       - name: Upload actions
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: actions
           path: actions.zip
@@ -88,7 +88,7 @@ jobs:
           mkdir -p tmp
 
       - name: Download actions
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: actions
 
@@ -116,7 +116,7 @@ jobs:
           dest: actions.zip
 
       - name: Upload actions
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: actions
           path: actions.zip
@@ -152,7 +152,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Download actions
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: actions
 
@@ -223,7 +223,7 @@ jobs:
           dest: ${{ matrix.ARTIFACT }}.zip
 
       - name: Upload actions
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.ARTIFACT }}
           path: ${{ matrix.ARTIFACT }}.zip
@@ -242,7 +242,7 @@ jobs:
           - ideckia-macos
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: ${{ matrix.os-ideckia }}
 
