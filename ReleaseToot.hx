@@ -1,7 +1,7 @@
 class ReleaseToot {
 	static function main() {
-		#if (mastodon_token && ideckia_version)
-		var mastodonToken = haxe.macro.Context.definedValue('mastodon_token');
+		#if (mastobot_token && ideckia_version)
+		var mastodonToken = haxe.macro.Context.definedValue('mastobot_token');
 		var ideckiaVersion = haxe.macro.Context.definedValue('ideckia_version');
 
 		var changelog = sys.io.File.getContent('changelog.md');
@@ -25,7 +25,7 @@ class ReleaseToot {
 
 		trace(http.responseData);
 		#else
-		trace('"-D mastodon_token" and "-D ideckia_version" are mandatory.');
+		trace('"-D mastobot_token" and "-D ideckia_version" are mandatory.');
 		#end
 	}
 }
