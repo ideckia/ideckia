@@ -135,7 +135,7 @@ This `index.js` file must have [this structure](https://github.com/ideckia/ideck
 * [Emoji](https://github.com/ideckia/action_emoji): Shows a random emoji every time is clicked
 * [Memory](https://github.com/ideckia/action_memory): The classic memory game in your client
 
-You don't like these actions? Change them or [create your own](#create-your-own-action) to fit your needs.
+You don't like these actions? Change them or [create your own](./tutorial/0_first_action/readme.md) to fit your needs.
 
 ### Preset action properties
 

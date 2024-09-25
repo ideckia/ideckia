@@ -47,9 +47,9 @@ Baliteke ordenagailuak eta bezeroak komunikatzeko erabiltzen duten portua sistem
 ## Kontzeptuak
 
 * Layout: _item_ multzo bat.
-* Item: _state_ bat edo gehiago izan ditzakeen elementua. Klientean klikagarria da.
+* Item: _state_ bat edo gehiago izan ditzakeen elementua. Bezeroan klikagarria da.
 * State: Itemaren egoeraren definizioa: text, textColor, bgColor, icon eta _action_ zerrenda bat.
-* Action: Klientean botoia klikatzen denean ordenagailuan exekutatuko den ekintza (bat baino gehiago izan daiteke _state_ bakoitzean).
+* Action: Bezeroan botoia klikatzen denean ordenagailuan exekutatuko den ekintza (bat baino gehiago izan daiteke _state_ bakoitzean).
 
 ## Layout fitxategia
 
@@ -89,7 +89,7 @@ Ekintzek zerbitzariko elkarrizketa-koadroen sistema atzi dezakete. Elkarrizketa-
 
 Ekintzek zerbitzariko audio sistema atzi dezakete. Audio sistema honen interfazea [API-an](https://github.com/ideckia/ideckia_api/blob/main/api/media/IMediaPlayer.hx) dago definiturik. ideckia-ren oinarrizko paketean, liburutegi [honen](https://github.com/ideckia/mediaplayer-rust) bidez eskeintzen da. Inplementazio hau exekutagarriaren ondoko `media` direktorioan dago, aplikazioak bertatik kargatuko baitu. Nahi adina pertsonalizatu daiteke, baita berri bat sortu ere.
 
-## Actions
+## Ekintzak
 
 Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` fitxategian konfiguragarri). Ekintza bakoitza bere direktorioan dago definitua eta `index.js` fitxategi bat du bertan.
 
@@ -133,7 +133,7 @@ Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` f
 * [Emoji](https://github.com/ideckia/action_emoji): Ausazko emojiak erakusten dira sakatzen den bakoitzean
 * [Memory](https://github.com/ideckia/action_memory): Memoria joko klasikoa zure bezeroan
 
-Ez zaizkizu ekintza hauek gustatzen? Alda itzazu edo [zurea sortu](#zure-ekintza-propioa-sortu) zure beharretara egokitzeko.
+Ez zaizkizu ekintza hauek gustatzen? Alda itzazu edo [zurea sortu](./tutorial/0_first_action/readme.eu.md) zure beharretara egokitzeko.
 
 ### Ekintzen aurredefinitutako propietateak
 
