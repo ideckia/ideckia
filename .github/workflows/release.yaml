@@ -4,14 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       app_version:
-        description: 'Ideckia version'
+        description: "Ideckia version"
         required: true
-      server_version:
-        description: 'Server version'
+      core_version:
+        description: "Core version"
         required: true
 
 jobs:
-
   create_release:
     name: Create release
     runs-on: ubuntu-latest
@@ -19,39 +18,38 @@ jobs:
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Create release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.event.inputs.app_version }}
-        release_name: Release ${{ github.event.inputs.app_version }}
-        body_path: changelog.md
-        draft: false
-        prerelease: false
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.event.inputs.app_version }}
+          release_name: Release ${{ github.event.inputs.app_version }}
+          body_path: changelog.md
+          draft: false
+          prerelease: false
 
   create_actions_artifact:
     name: Create actions artifact
     runs-on: ubuntu-latest
 
     steps:
+      - name: Create 'actions' folder
+        run: |
+          mkdir -p tmp/actions/tpl
+      - uses: vimtor/action-zip@v1
+        with:
+          files: tmp
+          dest: actions.zip
 
-    - name: Create 'actions' folder
-      run: |
-        mkdir -p tmp/actions
-    - uses: vimtor/action-zip@v1
-      with:
-        files: tmp
-        dest: actions.zip
-
-    - name: Upload actions
-      uses: actions/upload-artifact@v2
-      with:
-        name: actions
-        path: actions.zip
+      - name: Upload actions
+        uses: actions/upload-artifact@v2
+        with:
+          name: actions
+          path: actions.zip
 
   get_actions:
     name: Get actions
@@ -60,11 +58,10 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        action: 
+        action:
           - command
           - stopwatch
           - counter
-          - obs-control
           - random-color
           - timezones
           - worklog
@@ -81,46 +78,48 @@ jobs:
           - keepassxc-entry
           - emoji
           - memory
+          - obs-control
+          - system-info
+          - nuclear-control
 
     steps:
+      - name: Create 'actions' folder
+        run: |
+          mkdir -p tmp
 
-    - name: Create 'actions' folder
-      run: |
-        mkdir -p tmp
+      - name: Download actions
+        uses: actions/download-artifact@v2
+        with:
+          name: actions
 
-    - name: Download actions
-      uses: actions/download-artifact@v2
-      with:
-        name: actions
+      - name: Create folder
+        run: |
+          unzip actions.zip -d tmp/
+          rm actions.zip
 
-    - name: Create folder
-      run: |
-        unzip actions.zip -d tmp/
-        rm actions.zip
+      - name: Get action
+        uses: robinraju/release-downloader@v1.7
+        with:
+          repository: "ideckia/action_${{ matrix.action }}"
+          latest: true
+          fileName: "*.zip"
+          zipBall: false
+          tarBall: false
 
-    - name: Get action
-      uses: robinraju/release-downloader@v1.7
-      with:
-        repository: "ideckia/action_${{ matrix.action }}"
-        latest: true
-        fileName: "*.zip"
-        zipBall: false
-        tarBall: false
+      - name: Extract files
+        run: |
+          unzip "*.zip" -d tmp/actions
 
-    - name: Extract files
-      run: |
-        unzip "*.zip" -d tmp/actions
+      - uses: vimtor/action-zip@v1
+        with:
+          files: tmp
+          dest: actions.zip
 
-    - uses: vimtor/action-zip@v1
-      with:
-        files: tmp
-        dest: actions.zip
-
-    - name: Upload actions
-      uses: actions/upload-artifact@v2
-      with:
-        name: actions
-        path: actions.zip
+      - name: Upload actions
+        uses: actions/upload-artifact@v2
+        with:
+          name: actions
+          path: actions.zip
 
   os_files:
     name: OS files
@@ -128,140 +127,151 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: 
+        os:
           - linux
           - win
           - macos
 
         include:
-        - os: linux
-          SERVER_FILE: ideckia-linux
-          TRAY_FILE: ideckia_tray_linux
-          ARTIFACT: ideckia-linux
+          - os: linux
+            CORE_FILE: ideckia-linux
+            TRAY_FILE: ideckia_tray_linux
+            ARTIFACT: ideckia-linux
 
-        - os: win
-          SERVER_FILE: ideckia-win.exe
-          TRAY_FILE: ideckia_tray.exe
-          ARTIFACT: ideckia-win
+          - os: win
+            CORE_FILE: ideckia-win.exe
+            TRAY_FILE: ideckia_tray.exe
+            ARTIFACT: ideckia-win
 
-        - os: macos
-          SERVER_FILE: ideckia-macos
-          TRAY_FILE: ideckia_tray_macos
-          ARTIFACT: ideckia-macos
+          - os: macos
+            CORE_FILE: ideckia-macos
+            TRAY_FILE: ideckia_tray_macos
+            ARTIFACT: ideckia-macos
 
     steps:
+      - uses: actions/checkout@v2
 
-    - uses: actions/checkout@v2
-    
-    - name: Download actions
-      uses: actions/download-artifact@v2
-      with:
-        name: actions
+      - name: Download actions
+        uses: actions/download-artifact@v2
+        with:
+          name: actions
 
-    - name: Create folder
-      run: |
-        mkdir -p ${{ matrix.os }}
-        unzip actions.zip -d ${{ matrix.os }}
-        mv app.props ${{ matrix.os }}
-        mv icon_mini.png ${{ matrix.os }}/icon.png
-        mv layout.json ${{ matrix.os }}
+      - name: Create folder
+        run: |
+          mkdir -p ${{ matrix.os }}
+          unzip actions.zip -d ${{ matrix.os }}
+          mv app.props ${{ matrix.os }}
+          mv icon_mini.png ${{ matrix.os }}/icon.png
+          mv layout.json ${{ matrix.os }}
 
-    - name: Get action_keyboard
-      uses: robinraju/release-downloader@v1.7
-      with:
-        repository: "ideckia/action_keyboard"
-        latest: true
-        fileName: keyboard-${{ matrix.os }}.zip
+      - name: Get action_keyboard
+        uses: robinraju/release-downloader@v1.7
+        with:
+          repository: "ideckia/action_keyboard"
+          latest: true
+          fileName: keyboard-${{ matrix.os }}.zip
 
-    - name: Get action_color-picker
-      uses: robinraju/release-downloader@v1.7
-      with:
-        repository: "ideckia/action_color-picker"
-        latest: true
-        fileName: color-picker-${{ matrix.os }}.zip
+      - name: Get action_color-picker
+        uses: robinraju/release-downloader@v1.7
+        with:
+          repository: "ideckia/action_color-picker"
+          latest: true
+          fileName: color-picker-${{ matrix.os }}.zip
 
-    - name: Get dialogs implementation
-      uses: robinraju/release-downloader@v1.7
-      with:
-        repository: "ideckia/dialogs-clialogs"
-        latest: true
-        fileName: dialogs-${{ matrix.os }}.zip
+      - name: Get dialogs implementation
+        uses: robinraju/release-downloader@v1.7
+        with:
+          repository: "ideckia/dialogs-clialogs"
+          latest: true
+          fileName: dialogs-${{ matrix.os }}.zip
 
-    - name: Get tray executable
-      uses: robinraju/release-downloader@v1
-      with:
-        repository: "ideckia/tray"
-        latest: true
-        fileName: ${{ matrix.TRAY_FILE }}
+      - name: Get tray executable
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: "ideckia/tray"
+          latest: true
+          fileName: ${{ matrix.TRAY_FILE }}
 
-    - name: Get MediaPlayer implementation
-      uses: robinraju/release-downloader@v1.7
-      with:
-        repository: "ideckia/mediaplayer-rust"
-        latest: true
-        fileName: media-${{ matrix.os }}.zip
+      - name: Get MediaPlayer implementation
+        uses: robinraju/release-downloader@v1.7
+        with:
+          repository: "ideckia/mediaplayer-rust"
+          latest: true
+          fileName: media-${{ matrix.os }}.zip
 
-    - name: Get server
-      uses: robinraju/release-downloader@v1.7
-      with:
-        repository: "ideckia/ideckia_server"
-        latest: false
-        tag: ${{ github.event.inputs.server_version }}
-        fileName: ${{ matrix.SERVER_FILE }}
+      - name: Get core
+        uses: robinraju/release-downloader@v1.7
+        with:
+          repository: "ideckia/ideckia_core"
+          latest: false
+          tag: ${{ github.event.inputs.core_version }}
+          fileName: ${{ matrix.CORE_FILE }}
 
-    - name: Move files
-      run: |
-        unzip keyboard-${{ matrix.os }}.zip -d ${{ matrix.os }}/actions
-        unzip color-picker-${{ matrix.os }}.zip -d ${{ matrix.os }}/actions
-        unzip dialogs-${{ matrix.os }}.zip -d ${{ matrix.os }}
-        unzip media-${{ matrix.os }}.zip -d ${{ matrix.os }}
-        mv ${{ matrix.SERVER_FILE }} ${{ matrix.os }}
-        mkdir ${{ matrix.os }}/tray
-        mv ${{ matrix.TRAY_FILE }} ${{ matrix.os }}/tray
+      - name: Move files
+        run: |
+          unzip keyboard-${{ matrix.os }}.zip -d ${{ matrix.os }}/actions
+          unzip color-picker-${{ matrix.os }}.zip -d ${{ matrix.os }}/actions
+          unzip dialogs-${{ matrix.os }}.zip -d ${{ matrix.os }}
+          unzip media-${{ matrix.os }}.zip -d ${{ matrix.os }}
+          mv ${{ matrix.CORE_FILE }} ${{ matrix.os }}
+          mkdir ${{ matrix.os }}/tray
+          mv ${{ matrix.TRAY_FILE }} ${{ matrix.os }}/tray
 
-    - uses: vimtor/action-zip@v1
-      with:
-        files: ${{ matrix.os }}
-        dest: ${{ matrix.ARTIFACT }}.zip
-        
-    - name: Upload actions
-      uses: actions/upload-artifact@v2
-      with:
-        name: ${{ matrix.ARTIFACT }}
-        path: ${{ matrix.ARTIFACT }}.zip
+      - uses: vimtor/action-zip@v1
+        with:
+          files: ${{ matrix.os }}
+          dest: ${{ matrix.ARTIFACT }}.zip
+
+      - name: Upload actions
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.ARTIFACT }}
+          path: ${{ matrix.ARTIFACT }}.zip
 
   release_assets:
     name: Release assets
     needs:
-    - os_files
-    - create_release
+      - os_files
+      - create_release
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os-ideckia: 
+        os-ideckia:
           - ideckia-linux
           - ideckia-win
           - ideckia-macos
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ matrix.os-ideckia }}
 
-    - name: Download artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: ${{ matrix.os-ideckia }}
+      - name: Upload release assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
+          # This is how it will be named on the release page. Put hatever name
+          # you like, remember that they need to be different for each platform.
+          # You can choose any build matrix parameters. For Rust I use the
+          # target triple.
+          asset_name: ${{ matrix.os-ideckia }}.zip
+          # The path to the file you want to upload.
+          asset_path: ${{ matrix.os-ideckia }}.zip
+          # probably you will need to change it, but most likely you are
+          # uploading a binary file
+          asset_content_type: application/zip
 
-    - name: Upload release assets
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ needs.create_release.outputs.upload_url }}
-        # This is how it will be named on the release page. Put hatever name
-        # you like, remember that they need to be different for each platform.
-        # You can choose any build matrix parameters. For Rust I use the
-        # target triple.
-        asset_name: ${{ matrix.os-ideckia }}.zip
-        # The path to the file you want to upload.
-        asset_path: ${{ matrix.os-ideckia }}.zip
-        # probably you will need to change it, but most likely you are
-        # uploading a binary file
-        asset_content_type: application/zip
+  post_toot:
+    name: Post toot
+    needs: release_assets
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.2.4
+      - name: Post release toot
+        run: haxe --main ReleaseToot --interp -D mastobot_token=${{ secrets.MASTODON_BOT_TOKEN }} -D ideckia_version=${{ github.event.inputs.app_version }}
