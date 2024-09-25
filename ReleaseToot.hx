@@ -14,6 +14,8 @@ class ReleaseToot {
 		var releaseNotes = 'Ideckia ${ideckiaVersion} released!\n\n';
 		releaseNotes += 'Get it from https://ideckia.github.io\n';
 		releaseNotes += 'These are the changes:\n\n$changelog';
+		if (releaseNotes.length > 500)
+			releaseNotes = releaseNotes.substr(0, 400) + '\n\nFull changelog: https://github.com/ideckia/ideckia/blob/master/changelog.md';
 
 		http.setPostData(haxe.Json.stringify({
 			status: releaseNotes
