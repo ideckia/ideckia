@@ -120,6 +120,7 @@ jobs:
         with:
           name: actions
           path: actions.zip
+          overwrite: true
 
   os_files:
     name: OS files
