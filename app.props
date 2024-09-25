@@ -7,3 +7,6 @@ ideckia.logs.level=error
 ideckia.check-updates=true
 # ideckia.client-path=/path/to/the/client
 ideckia.auto-launch-enabled=false
+ideckia.actions-load-timeout-ms=1000
+ideckia.actions-reload-delay-ms=1000
+ideckia.locale=en_UK
