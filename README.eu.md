@@ -132,6 +132,9 @@ Ekintzen iturburuak `actions` karpetan daude eskuragarri defektuz (`app.props` f
 * [KeePassXC](https://github.com/ideckia/action_keepassxc): Erabiltzaile izen eta pasahitz guztiak hartzen ditu [KeePassXC](https://keepassxc.org/) datu base batetik. DBko sarrera bakoitzarekin bezeroan elementu klikagarri bat sortuko da. Ekintza honek [Log-in](https://github.com/ideckia/action_log-in) erabiltzen du, derrigorrezkoa da.
 * [Emoji](https://github.com/ideckia/action_emoji): Ausazko emojiak erakusten dira sakatzen den bakoitzean
 * [Memory](https://github.com/ideckia/action_memory): Memoria joko klasikoa zure bezeroan
+* [system-info](https://github.com/ideckia/action_system-info/): Sistemaren informazioa bistan izateko ([systeminformation](https://systeminformation.io)-ren eskutik)
+* [nuclear-control](https://github.com/ideckia/action_nuclear-control/): Kontrolatu [nuclear musika programa](https://nuclear.js.org/)
+* [spotube-control](https://github.com/ideckia/action_spotube-control/): Kontrolatu [spotube musika programa](https://github.com/KRTirtho/spotube)
 
 Ez zaizkizu ekintza hauek gustatzen? Alda itzazu edo [zurea sortu](./tutorial/0_first_action/readme.eu.md) zure beharretara egokitzeko.
 

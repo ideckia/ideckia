@@ -134,6 +134,9 @@ This `index.js` file must have [this structure](https://github.com/ideckia/ideck
 * [KeePassXC](https://github.com/ideckia/action_keepassxc): Gets all the username and passwords from a [KeePassXC](https://keepassxc.org/) database and creates an item for each. This action uses [Log-in](https://github.com/ideckia/action_log-in), it is mandatory.
 * [Emoji](https://github.com/ideckia/action_emoji): Shows a random emoji every time is clicked
 * [Memory](https://github.com/ideckia/action_memory): The classic memory game in your client
+* [system-info](https://github.com/ideckia/action_system-info/): Shows the system information in the item (powered by [systeminformation](https://systeminformation.io))
+* [nuclear-control](https://github.com/ideckia/action_nuclear-control/): Control the [nuclear music player](https://nuclear.js.org/)
+* [spotube-control](https://github.com/ideckia/action_spotube-control/): Control the [spotube music player](https://github.com/KRTirtho/spotube)
 
 You don't like these actions? Change them or [create your own](./tutorial/0_first_action/readme.md) to fit your needs.
 

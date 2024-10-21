@@ -81,6 +81,7 @@ jobs:
           - obs-control
           - system-info
           - nuclear-control
+          - spotube-control
 
     steps:
       - name: Create 'actions' folder
